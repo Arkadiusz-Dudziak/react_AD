@@ -9,7 +9,7 @@ class Popup extends React.Component 
         super(props)
         this.state = 
         {
-            register: false
+            register: this.props.register
         }
         this.handleRegisterChange = this.handleRegisterChange.bind(this)
     }

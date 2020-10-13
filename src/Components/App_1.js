@@ -11,29 +11,24 @@ class App_1 extends React.Component
             showPopup: false,
             register: false
         };
+        this.togglePopup = this.togglePopup.bind(this)
     }
 
-    togglePopup() 
+    togglePopup(props) 
     {
         this.setState(
         {
-            showPopup: !this.state.showPopup
-        });
-    }
-    togglePopup() 
-    {
-        this.setState(
-        {
-            showPopup: !this.state.showPopup
+            showPopup: !this.state.showPopup,
+            register: props
         });
     }
     render() 
     {
-        
+        let register = false;
         return (
         <div className='app'>
-            <button onClick={this.togglePopup.bind(this)}>ZALOGUJ SIĘ</button>
-            <button onClick={this.togglePopup.bind(this)}>ZAREJESTRUJ SIĘ</button>
+            <button onClick={()=>this.togglePopup(false)}>ZALOGUJ SIĘ</button>
+            <button onClick={()=>this.togglePopup(true)}>ZAREJESTRUJ SIĘ</button>
             <p>Lista obiektów: </p>
             <ul>
                 <li>Boisko bez murawy</li>
@@ -46,7 +41,8 @@ class App_1 extends React.Component
             <input type="text" placeholder="wpisz nazwę obiektu"/>
             {this.state.showPopup ? 
             <Popup
-                closePopup={this.togglePopup.bind(this)}
+                register = {this.state.register}
+                closePopup={this.togglePopup}
             />
             : null
             }

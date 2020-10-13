@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import RegulationsPopup from "./RegulationsPopup"
 
 class FormRegister extends Component
 {
@@ -12,11 +13,12 @@ class FormRegister extends Component
             password: "",
             password_confirm: "",
             error_message: "",
-            regulations_ok: false
-
+            regulations_ok: false,
+            showRegulations: false
         }
        this.handleChange = this.handleChange.bind(this)
        this.handleSubmit = this.handleSubmit.bind(this)
+       this.handleRegulationPopup = this.handleRegulationPopup.bind(this)
     }
 
     handleChange(event)
@@ -32,6 +34,14 @@ class FormRegister extends Component
             console.log("Dobrze!")
         else
             console.log("Źle")
+    }
+
+    handleRegulationPopup(event)
+    {
+        this.setState(
+        {
+            showRegulations: !this.state.showRegulations,
+        });
     }
 
     render()
@@ -84,8 +94,20 @@ class FormRegister extends Component
                             onChange={this.handleChange}
                             required
                         />
-                        Akceptuję <span class="regulations_link">regulamin</span>
+                        Akceptuję&nbsp;
                     </label>
+                    <span class="regulations_link"
+                        onClick={this.handleRegulationPopup}>
+                        regulamin
+                    </span>
+                    {this.state.showRegulations ? 
+                        <RegulationsPopup
+                            register = {this.state.register}
+                            closePopup={this.handleRegulationPopup}
+                        />
+                        : null
+                    }
+                    
 
                     <br/>
                     <label>
