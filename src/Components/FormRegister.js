@@ -1,5 +1,8 @@
 import React, {Component} from "react"
 import RegulationsPopup from "./RegulationsPopup"
+import {Button} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 
 class FormRegister extends Component
 {
@@ -13,18 +16,38 @@ class FormRegister extends Component
             password: "",
             password_confirm: "",
             error_message: "",
+            minChar: null,
+            number: null,
+            visible: true,
+            specialChar: null,
             regulations_ok: false,
             showRegulations: false
         }
        this.handleChange = this.handleChange.bind(this)
+       this.handlePasswordChange = this.handlePasswordChange.bind(this)
        this.handleSubmit = this.handleSubmit.bind(this)
        this.handleRegulationPopup = this.handleRegulationPopup.bind(this)
+       this.toggleFocus = this.toggleFocus.bind(this)
     }
 
     handleChange(event)
     {
         const {name, value, type, checked} = event.target
         type === "checkbox" ? this.setState({[name]:checked}) :this.setState({[name]:value})
+    }
+
+    handlePasswordChange(event)
+    {
+        const isNumberRegx = /\d/;
+        const specialCharacterRegx = /[ !@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+        const {value, name} = event.target;
+        this.setState({[name]:value})
+        this.setState({
+            minChar: value.length >= 8 ? true : false,
+            number: isNumberRegx.test(value)? true : false,
+            specialChar: specialCharacterRegx.test(value)? true : false
+        }
+        )
     }
 
     handleSubmit(event)
@@ -42,6 +65,16 @@ class FormRegister extends Component
         {
             showRegulations: !this.state.showRegulations,
         });
+    }
+
+    toggleFocus(event)
+    {
+        this.setState(prevState =>
+            {
+                return{visible: !prevState.visible}
+                
+            }
+        )
     }
 
     render()
@@ -70,10 +103,22 @@ class FormRegister extends Component
                         <input type="password"
                             name="password"
                             value={this.state.password}
-                            onChange={this.handleChange}
+                            onChange={this.handlePasswordChange}
+                            onFocus={this.toggleFocus}
+                            onBlur={this.toggleFocus}
                             required
                         />
                     </label>
+
+                    <label style={this.state.visible? {display: "none"}:{display:"block"}}>
+                        <br/>
+                         Hasło musi posiadać: <br/>
+                        <span style={this.state.minChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 8 znaków</b></span><br/>
+                        <span style={this.state.number? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 cyfrę</b></span><br/>
+                        <span style={this.state.specialChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 znak specjalny</b></span><br/>
+                    </label>
+                        
+
 
                     <label>
                     <br/>
@@ -85,6 +130,7 @@ class FormRegister extends Component
                             required
                         />
                     </label>
+
 
                     <br/>
                     <label>
@@ -111,15 +157,16 @@ class FormRegister extends Component
 
                     <br/>
                     <label>
-                        <button type="submit">ZAREJESTRUJ SIĘ</button>
+                        <Button type="submit">ZAREJESTRUJ SIĘ</Button>
                     </label>
                     <br/>
                     Jednak mam konto, chce się zalogować
                     <br/>
-                    <button onClick={()=>this.props.action()}>LOGOWANIE</button>
+                    <Button onClick={()=>this.props.action()}>LOGOWANIE</Button>
                     <br/>
-                </form>  
-                 
+                </form> 
+
+                
             </div>
         )
         //<button onClick={()=>this.props.action()}>REJESTRACJA</button>
@@ -128,6 +175,10 @@ class FormRegister extends Component
         // <p>{this.state.password} </p>
         // <p>{this.state.password_confirm}</p>
         //<p>{this.state.regulations_ok? "ok": "nie ok"}</p>    
+        // <p>{this.state.password} </p>
+        // <p>{this.state.minChar? ">=8" : "za malo"}</p>      
+        // <p>{this.state.number? "jest liczba" : "brak liczby"}</p>
+        // <p>{this.state.specialChar? "jest specjalny" : "brak specjalnego"}</p>
     }
 }
 

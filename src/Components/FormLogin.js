@@ -1,4 +1,6 @@
 import React, {Component} from "react"
+import {Button} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class FormLogin extends Component
 {
@@ -21,14 +23,13 @@ class FormLogin extends Component
                 </label>
                 <br/>
                 <label>
-                    <button>ZALOGUJ</button>
+                    <Button>ZALOGUJ</Button>
                 </label>
-                <br/>
-               
+                    <br/>
                     Nie masz konta? Śmiało, możesz się zarejestrować
                     <br/>
                 <label>
-                    <button onClick={()=>this.props.action()}>REJESTRACJA</button>
+                    <Button onClick={()=>this.props.action()}>REJESTRACJA</Button>
                 </label>
                 <br/>
                 

@@ -1,6 +1,8 @@
 import React, {Component} from "react"
 import FormLogin from "./FormLogin"
 import FormRegister from "./FormRegister"
+import {Button} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 class Popup extends React.Component 
 {
@@ -28,7 +30,7 @@ class Popup extends React.Component 
         <div className='popup'>
           <div className='popup_inner'>
                 {this.state.register ? <FormRegister action={this.handleRegisterChange}/> : <FormLogin action={this.handleRegisterChange}/>}
-                <button onClick={this.props.closePopup}>Zamknij</button>
+                <Button onClick={this.props.closePopup}>Zamknij</Button>
           </div>
         </div>
       );
