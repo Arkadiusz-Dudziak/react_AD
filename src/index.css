@@ -134,3 +134,35 @@ html, body, .app
   color: black;
 }
 
+
+
+
+table
+{
+  border: 2px solid black;
+  text-align: center;
+}
+td
+{
+  border: 2px solid black;
+  text-align: center;
+  padding: 5px;
+  min-width: 70px;
+}
+th
+{
+  border: 2px solid black;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+thead
+{
+  background-color: blanchedalmond;
+  cursor: pointer;
+}
+th:hover
+{
+  background-color: burlywood;
+}
+
