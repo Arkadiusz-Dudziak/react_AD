@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {Button} from 'react-bootstrap'
+import {Button, Form, FormGroup} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 class FormLogin extends Component
@@ -9,19 +9,24 @@ class FormLogin extends Component
         return(
             <div>
                 <h1>LOGOWANIE</h1>
+                <FormGroup>
                 <label>
                     <h2>Email lub login</h2> 
                     <input type="text"
                         required
                     />
                 </label>
+                </FormGroup>
+                
+                <FormGroup>
                 <label>
                     <h2>Hasło</h2> 
                     <input type="password"
                         required
                     />
                 </label>
-                <br/>
+                </FormGroup>
+                
                 <label>
                     <Button>ZALOGUJ</Button>
                 </label>

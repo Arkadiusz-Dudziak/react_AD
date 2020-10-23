@@ -12,7 +12,7 @@ class RegulationsPopup extends Component
         return(
         <div className='RegulationsPopup'>
           <div className='RegulationsPopup_inner'>
-                <button onClick={this.props.closePopup}>X</button>
+                <button style={{float: "right"}}onClick={this.props.closePopup}>X</button>
                 <ol>
                     <li>Warunki techniczne korzystania z serwisu</li>
                     <ul>
@@ -67,7 +67,7 @@ class RegulationsPopup extends Component
                         </li>
                     </ul>
                 </ol>
-                <button onClick={this.props.closePopup}>Zamknij</button>
+                <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} onClick={this.props.closePopup}>Zamknij</button>
             </div>
         </div>
         )

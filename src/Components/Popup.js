@@ -3,6 +3,11 @@ import FormLogin from "./FormLogin"
 import FormRegister from "./FormRegister"
 import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faTimes);
 
 class Popup extends React.Component 
 {
@@ -12,6 +17,7 @@ class Popup extends React.Component 
         this.state = 
         {
             register: this.props.register
+
         }
         this.handleRegisterChange = this.handleRegisterChange.bind(this)
     }
@@ -20,7 +26,7 @@ class Popup extends React.Component 
     {
         this.setState(prevState => 
         {
-                return{register: !prevState.register}    
+              return{register: !prevState.register}    
         })
     }
 
@@ -29,8 +35,15 @@ class Popup extends React.Component 
       return (
         <div className='popup'>
           <div className='popup_inner'>
+              <div style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
+                  <FontAwesomeIcon 
+                    icon="times" 
+                    onClick={this.props.closePopup}
+                    cursor="pointer"
+                  />
+              </div>
+                
                 {this.state.register ? <FormRegister action={this.handleRegisterChange}/> : <FormLogin action={this.handleRegisterChange}/>}
-                <Button onClick={this.props.closePopup}>Zamknij</Button>
           </div>
         </div>
       );
