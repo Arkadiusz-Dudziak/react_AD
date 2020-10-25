@@ -1,7 +1,6 @@
 import React, {Component} from "react"
-import Json_Reader from "./Json_Reader"
 import UsersTable from "./UsersTable"
-
+//import UsersTable2 from "../F_TableCells/UsersTablev2"
 class App_2 extends Component
 {
     constructor() 
@@ -16,6 +15,7 @@ class App_2 extends Component
     {
         return(
             <div>
+                <h1>Panel Administratora</h1>
                 <UsersTable/>
             </div>
         )

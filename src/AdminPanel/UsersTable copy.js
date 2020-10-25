@@ -12,12 +12,9 @@ class UsersTable extends Component
       this.state = 
       {
          data: Data,
-         clickList: [true,true,true,true,true,true,true,true],
-         are_any_changes: false,
-         changed_users:[]
+         clickList: [true,true,true,true,true,true,true,true]
       };
       this.onSort = this.onSort.bind(this);
-      this.componentDidMount = this.componentDidMount.bind(this);
     }
   
   
@@ -53,48 +50,13 @@ class UsersTable extends Component
       this.setState({data,corrected_clickList})
     }
 
-    componentDidMount()
-    {
-      const tbody = document.querySelector('#tbody');
-      var table = document.getElementById("admin_table");
-      const self = this;
-      var user_array = this.state.changed_users;
 
-      tbody.addEventListener('click', function (e) 
-      {
-        const cell = e.target.closest('td');
-        var jsonData = {"id": "", "email":"", "login":"", "verified":"", "user": "", "adminofacility":"", "moderator":"", "admin":""};
-        if (!cell) {return;} // Quit, not clicked on a cell
-        const row = cell.parentElement;
-        //console.log(cell.innerHTML, row.rowIndex, cell.cellIndex, cell.backgroundColor);
-        if(cell.style.backgroundColor == "green")
-          cell.style.backgroundColor = "red";
-        else
-          cell.style.backgroundColor = "green";
-        
-       //console.log(table.rows[row.rowIndex].cells[0]);
-
-        jsonData.id = table.rows[row.rowIndex].cells[0].innerHTML;
-        jsonData.email = table.rows[row.rowIndex].cells[1].innerHTML;
-        jsonData.login = table.rows[row.rowIndex].cells[2].innerHTML;
-        jsonData.verified = table.rows[row.rowIndex].cells[3].innerText==="TAK"?"1":"0";  //?? innerText, innerHTML nie działa
-        jsonData.user = table.rows[row.rowIndex].cells[4].style.backgroundColor==="green"?"1":"0";
-        jsonData.adminofacility = table.rows[row.rowIndex].cells[5].style.backgroundColor==="green"?"1":"0";
-        jsonData.moderator = table.rows[row.rowIndex].cells[6].style.backgroundColor==="green"?"1":"0";
-        jsonData.admin = table.rows[row.rowIndex].cells[7].style.backgroundColor==="green"?"1":"0";
-        user_array.push(jsonData);
-        console.log(user_array);
-        console.log(table.rows[row.rowIndex].cells[3].innerHTML);
-        //self.setState({are_any_changes:true})
-        self.setState({changed_users:user_array})
-      });
-    }
-
+  
     render() {
       var newdata = this.state.data;
         
       return (
-        <table id="admin_table">
+        <table>
           <thead>
             <tr>
               <th onClick={e => this.onSort(e, 'id', 0)}>ID</th>
@@ -105,10 +67,9 @@ class UsersTable extends Component
               <th onClick={e => this.onSort(e, 'adminofacility', 5)}>A. Obiektu</th>
               <th onClick={e => this.onSort(e, 'moderator', 6)}>Moderator</th>
               <th onClick={e => this.onSort(e, 'admin', 7)}>Admin</th>
-              {this.state.are_any_changes?<th>Potwierdź wszystko</th>:null}
             </tr>
           </thead>
-          <tbody id="tbody">
+          <tbody>
             {newdata.map(function(userDetails, index) {
               return (
                 <tr key={index} data-item={userDetails}>
@@ -131,12 +92,3 @@ class UsersTable extends Component
   }
   
   export default UsersTable;
-
-  /*const tbody = document.querySelector('#position tbody');
-      tbody.addEventListener('click', function (e) 
-      {
-        const cell = e.target.closest('td');
-        if (!cell) {return;} // Quit, not clicked on a cell
-        const row = cell.parentElement;
-        console.log(cell.innerHTML, row.rowIndex, cell.cellIndex);
-      });*/
