@@ -77,7 +77,7 @@ class FormRegister extends Component
     handleSubmit(event)
     {   
         event.preventDefault();
-        if(this.state.password == this.state.password_confirm && this.state.password_correct && this.state.regulations_ok)
+        if(this.state.password === this.state.password_confirm && this.state.password_correct && this.state.regulations_ok)
         {
             this.setState({showRegistrationEnd: true})
         }

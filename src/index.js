@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 //import './index.css';
-import App_1 from './Components/App_1';
+//import App_1 from './Components/App_1';
+
 import App_2 from './AdminPanel/App_2';
 import './indexAP.css'
+
 import * as serviceWorker from './serviceWorker';
 
 
