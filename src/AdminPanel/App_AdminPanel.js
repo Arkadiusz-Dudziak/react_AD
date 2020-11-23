@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import UsersTable from "./UsersTable"
-//import UsersTable2 from "../F_TableCells/UsersTablev2"
+import "./indexAP.css"
 class App_2 extends Component
 {
     constructor() 
@@ -15,7 +15,7 @@ class App_2 extends Component
     {
         return(
             <div>
-                <h1>Panel Administratora</h1>
+                <h1>Panel Administratora (Konta)</h1>
                 <UsersTable/>
             </div>
         )

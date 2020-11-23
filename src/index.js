@@ -1,16 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./index.css"
 
-//import './index.css';
-//import App_1 from './Components/App_1';
+//import App_LoginRegister from './LoginRegisterComp/App_LoginRegister'; //logowanie, rejestracja
 
-import App_2 from './AdminPanel/App_2';
-import './indexAP.css'
+//import App_AdminPanel from './AdminPanel/App_AdminPanel'; //rozwijane listy, nie pobiera dobrze za pierwszym razem wybranej wartości 
+
+import App_ObiektyPanel from './ObiektyPanel/App_ObiektyPanel'
+
+//import App from './AdminPanelMDB/App'; //skomplikowane, krotkie, nie działa
+
 
 import * as serviceWorker from './serviceWorker';
 
 
-ReactDOM.render(<App_2/>, document.getElementById('root'));
+ReactDOM.render(<App_ObiektyPanel/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

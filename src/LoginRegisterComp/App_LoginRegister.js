@@ -2,6 +2,7 @@ import React, {Component} from "react"
 import Popup from "./Popup"
 import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import './index_LR.css';
 /* https://codepen.io/bastianalbers/pen/PWBYvz */
 class App_1 extends React.Component 
 {
