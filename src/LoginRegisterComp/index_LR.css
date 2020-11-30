@@ -127,6 +127,31 @@ html, body, .app
   background: #b3d0ff;
   color: black;
 }
+/*pomoc*/
+.Help_popup 
+{
+  position: fixed;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+.Help_popup_inner
+{
+  position: absolute;
+  text-align: center;
+  left: 5%;
+  right:5%;
+  top: 0%;
+  bottom: 0%;
+  margin: auto;
+  background: #b3d0ff;
+  color: black;
+}
+
 
 
 
@@ -158,5 +183,17 @@ thead
 th:hover
 {
   background-color: burlywood;
+}
+
+
+.forgot_password
+{
+  color: blue;
+}
+
+.forgot_password:hover
+{
+  cursor: pointer;
+  text-decoration-line: underline;
 }
 

@@ -3,6 +3,7 @@ import Popup from "./Popup"
 import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index_LR.css';
+import HelpPopup from "./HelpPopup";
 /* https://codepen.io/bastianalbers/pen/PWBYvz */
 class App_1 extends React.Component 
 {
@@ -12,9 +13,11 @@ class App_1 extends React.Component
         this.state = 
         {
             showPopup: false,
-            register: false
+            register: false,
+            showHelp: false
         };
         this.togglePopup = this.togglePopup.bind(this)
+        this.toggleHelp = this.toggleHelp.bind(this)
     }
 
     togglePopup(props) 
@@ -25,6 +28,13 @@ class App_1 extends React.Component
             register: props
         });
     }
+    toggleHelp(props) 
+    {
+        this.setState(
+        {
+            showHelp: !this.state.showHelp
+        });
+    }
     render() 
     {
         let register = false;
@@ -32,6 +42,7 @@ class App_1 extends React.Component
         <div className='app'>
             <Button onClick={()=>this.togglePopup(false)}>ZALOGUJ SIĘ</Button>
             <Button onClick={()=>this.togglePopup(true)}>ZAREJESTRUJ SIĘ</Button>
+            <Button onClick={()=>this.toggleHelp()}>POMOC</Button>
             <p>Lista obiektów: </p>
             <ul>
                 <li>Boisko bez murawy</li>
@@ -46,6 +57,13 @@ class App_1 extends React.Component
             <Popup
                 register = {this.state.register}
                 closePopup={this.togglePopup}
+            />
+            : null
+            }
+
+            {this.state.showHelp ? 
+            <HelpPopup
+                closePopup={this.toggleHelp}
             />
             : null
             }

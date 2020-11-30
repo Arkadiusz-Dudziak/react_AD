@@ -43,7 +43,7 @@ class Popup extends React.Component 
                   />
               </div>
                 
-                {this.state.register ? <FormRegister action={this.handleRegisterChange}/> : <FormLogin action={this.handleRegisterChange}/>}
+              {this.state.register ? <FormRegister action={this.handleRegisterChange}/> : <FormLogin action={this.handleRegisterChange}/>}
           </div>
         </div>
       );

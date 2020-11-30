@@ -61,7 +61,7 @@ class UsersTable extends Component
       const tbody = document.querySelector('#tbody');
       var table = document.getElementById("admin_table");
       const self = this;
-      var user_array = this.state.changed_users;
+      var users_array = this.state.changed_users;
 
       tbody.addEventListener('click', function (e) 
       {
@@ -98,16 +98,16 @@ class UsersTable extends Component
           jsonData.verified = table.rows[row.rowIndex].cells[3].innerText==="TAK"?  "1":"0";  //?? innerText, innerHTML nie działa
           jsonData.permissions = self.state.value;//TODO !
           jsonData.banned = table.rows[row.rowIndex].cells[5].banned;
-          user_array.push(jsonData);
+          users_array.push(jsonData);
          
-          for(var i=0; i<user_array.length-1; i++)
+          for(var i=0; i<users_array.length-1; i++)
           {//usuwanie z tablicy uzytkownikow z więcej niż jedną zmianą (liczy się tylko ostatnia zmiana)
-            if(jsonData.id===user_array[i].id)
-              user_array.splice(i,1);
+            if(jsonData.id===users_array[i].id)
+            users_array.splice(i,1);
           }
 
           //console.log(user_array);
-          self.setState({changed_users:user_array,are_any_changes:true})
+          self.setState({changed_users:users_array,are_any_changes:true})
         }
        
       });
