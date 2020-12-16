@@ -102,11 +102,7 @@ class FormRegister extends Component
 
     toggleFocus(event)
     {
-        this.setState(prevState =>
-            {
-                return{visible: !prevState.visible}
-            }
-        )
+        this.setState({visible: false})
     }
 
     togglePassVisible(event)

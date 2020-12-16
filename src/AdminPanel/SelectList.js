@@ -1,6 +1,6 @@
 import React,{Component} from "react"
 
-class V2_Select extends Component
+class SelectList extends Component
 {
     constructor(props)
     {
@@ -30,4 +30,4 @@ class V2_Select extends Component
         )
     }
 }
-export default V2_Select
+export default SelectList

@@ -17,8 +17,8 @@ class RegulationsPopup extends Component
                     <li>Warunki techniczne korzystania z serwisu</li>
                     <ul>
                         <li>
-                            Serwis jest napisany w bibliotece JavaScript. Wyłączenie JavaScript 
-                            uniemożliwi korzystanie z serwisu.
+                            Serwis korzysta między innymi z Reacta, czyli biblioteki języka programowania Javascript. 
+                            Wyłączenie JavaScript uniemożliwi korzystanie z serwisu.
                         </li>
                         <li>Korzystanie z serwisu opiera się o wykorzystanie technologii
                             Cookies.

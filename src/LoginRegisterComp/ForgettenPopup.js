@@ -2,8 +2,8 @@ import React, {Component} from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Button, Form, FormGroup} from 'react-bootstrap'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-library.add(faTimes);
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
+library.add(faUndo);
 class ForgottenPopup extends React.Component 
 {
     render() 
@@ -13,7 +13,7 @@ class ForgottenPopup extends React.Component 
             <div className='popup_inner'>
                 <div style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
                     <FontAwesomeIcon 
-                    icon="times" 
+                    icon="undo" 
                     onClick={this.props.closePopup}
                     cursor="pointer"
                     />

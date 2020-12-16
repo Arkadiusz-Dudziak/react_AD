@@ -1,5 +1,7 @@
 import React, {Component} from "react"
-import UsersTable from "./UsersTable"
+import UsersTable from "./TabelaKonta"
+//import {DatePicker} from "react-bootstrap-date-picker"
+
 import "./indexAP.css"
 class App_2 extends Component
 {
@@ -17,6 +19,7 @@ class App_2 extends Component
             <div>
                 <h1>Panel Administratora (Konta)</h1>
                 <UsersTable/>
+                
             </div>
         )
     }

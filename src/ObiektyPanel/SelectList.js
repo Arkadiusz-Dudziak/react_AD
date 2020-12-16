@@ -14,7 +14,7 @@ class SelectList extends Component
 
     handleChange(e)
     {
-        this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)})
+        this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)});
     }
 
 
