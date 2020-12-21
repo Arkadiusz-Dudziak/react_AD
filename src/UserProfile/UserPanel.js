@@ -21,7 +21,7 @@ class UserPanel extends Component
                     <LoremIpsum/>
                 </div> 
                 <div ref={(ref) => {this.myRef[1] = ref}}>
-                    <h1>Ulubone</h1>
+                    <h1>Ulubione</h1>
                     <LoremIpsum/>
                     <LoremIpsum/>
                     <LoremIpsum/>

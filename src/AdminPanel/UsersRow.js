@@ -77,20 +77,8 @@ class UsersRow extends Component
         return(
             <tr key={this.props.index} data-item={this.props.userDetails}>
                 <td>{this.props.userDetails.id}</td>
-                <td>{!this.state.change?this.state.email:
-                    <input type="text" 
-                        name="email"
-                        value={this.state.email} 
-                        onChange={this.handleInput}
-                    />}
-                </td>
-                <td>{!this.state.change?this.state.login:
-                    <input type="text" 
-                        name="login"
-                        value={this.state.login} 
-                        onChange={this.handleInput}
-                    />}
-                </td>
+                <td>{this.state.email}</td>
+                <td>{this.state.login}</td>
                 <td>{!this.state.change?this.state.zweryfikowany:
                     <RadioButtons value={this.props.userDetails.zweryfikowany} action={this.handler2}/>}
                 </td>

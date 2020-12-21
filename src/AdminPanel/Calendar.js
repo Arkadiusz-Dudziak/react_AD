@@ -36,12 +36,18 @@ class Calendar extends Component
     }
     render()
     {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
         return(
                 <>
                     anuluj
                     <Form.Control 
                         type="date"
                         value={this.state.date}
+                        min={today} //TODO   czas z serwera
                         name="data"
                         onChange={this.handleInput}
                     />
