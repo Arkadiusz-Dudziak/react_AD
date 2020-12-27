@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import "./indexUP.scss"
 import LoremIpsum from "../LoremIpsum"
 
 class UserPanel extends Component

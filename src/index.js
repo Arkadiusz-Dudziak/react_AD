@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./index.css"
 
-import App_LoginRegister from './LoginRegisterComp/App_LoginRegister'; //logowanie, rejestracja
+//import App_LoginRegister from './LoginRegisterComp/App_LoginRegister'; //logowanie, rejestracja
 
-import App_AdminPanel from './AdminPanel/App_KontaPanel';   //panel z kontami uzytkownikow
+//import App_AdminPanel from './AdminPanel/App_KontaPanel';   //panel z kontami uzytkownikow
 
-import App_ObiektyPanel from './ObiektyPanel/App_ObiektyPanel'
+//import App_ObiektyPanel from './ObiektyPanel/App_ObiektyPanel'
 
-import App_UserProfile from './UserProfile/App_UserProfile';
+//import App_UserProfile from './UserProfile/App_UserProfile';
 
 import App_Options from './Options/App_Options';
 

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import LinkConfirmPopup from "./LinkConfirmNotification"
+import NewPasswordandRepeat from "../SharedModules/NewPassword"
 
 library.add(faEye);
 library.add(faEyeSlash);
@@ -20,26 +21,18 @@ class FormRegister extends Component
         {
             email: "",
             login: "",
-            password: "",
-            password_confirm: "",
             error_message: "",
-            minChar: null,
-            number: null,
-            visible: true,
-            specialChar: null,
             regulations_ok: false,
             showRegulations: false,
             showRegistrationEnd: false,
-            password_correct: false,
-            password_visible: false
+            passwords_are_equal: false
         }
-       this.handleChange = this.handleChange.bind(this)
-       this.handlePasswordChange = this.handlePasswordChange.bind(this)
-       this.handleSubmit = this.handleSubmit.bind(this)
-       this.handleRegulationPopup = this.handleRegulationPopup.bind(this)
-       this.handleRegistrationEnd = this.handleRegistrationEnd.bind(this)
-       this.toggleFocus = this.toggleFocus.bind(this)
-       this.togglePassVisible = this.togglePassVisible.bind(this)
+       this.handleChange = this.handleChange.bind(this);
+       this.handleSubmit = this.handleSubmit.bind(this);
+       this.handleRegulationPopup = this.handleRegulationPopup.bind(this);
+       this.handleRegistrationEnd = this.handleRegistrationEnd.bind(this);
+       this.toggleFocus = this.toggleFocus.bind(this);
+       this.set_passwords_equality = this.set_passwords_equality.bind(this);
     }
 
     handleChange(event)
@@ -48,31 +41,6 @@ class FormRegister extends Component
         type === "checkbox" ? this.setState({[name]:checked}) :this.setState({[name]:value})
     }
 
-    handlePasswordChange(event)
-    {
-        const isNumberRegx = /\d/;
-        const specialCharacterRegx = /[  !@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?]/;
-        const {value, name} = event.target;
-        this.setState({[name]: value})
-        this.setState({
-            minChar: value.length >= 7 ? true : false,
-            number: isNumberRegx.test(value)? true : false,
-            specialChar: specialCharacterRegx.test(value)? true : false,
-        }, () =>
-        {
-            if(this.state.minChar && this.state.number && this.state.specialChar)
-            {
-                this.setState({password_correct: true})
-            }
-            else
-            {
-                this.setState({password_correct: false})
-            }
-        }
-        
-
-        );
-    }
 
     handleSubmit(event)
     {   
@@ -105,14 +73,12 @@ class FormRegister extends Component
         this.setState({visible: false})
     }
 
-    togglePassVisible(event)
+
+    set_passwords_equality(bool)
     {
-        this.setState(prevState =>
-            {
-                return{password_visible: !prevState.password_visible}
-            }
-        )
+        this.setState({passwords_are_equal: bool})
     }
+
 
     render()
     {
@@ -140,47 +106,7 @@ class FormRegister extends Component
                     />
                     </FormGroup>
                     
-                    <FormGroup>
-                    <label>
-                        <h2>Hasło</h2> 
-                        <input type={this.state.password_visible? "text" : "password"}
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.handlePasswordChange}
-                            onFocus={this.toggleFocus}
-                            onBlur={this.toggleFocus}
-                            maxLength="128"
-                            required
-                        />
-                    </label>
-                    <FontAwesomeIcon 
-                        icon={this.state.password_visible? "eye" : "eye-slash"}
-                        onClick={this.togglePassVisible}
-                        cursor="pointer"
-                    />
-                    </FormGroup>
-                    
-
-                    <label style={this.state.visible? {display: "none"}:{display:"block"}}>
-                         Hasło musi posiadać: <br/>
-                        <span style={this.state.minChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 8 znaków</b></span><br/>
-                        <span style={this.state.number? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 cyfrę</b></span><br/>
-                        <span style={this.state.specialChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 znak specjalny</b></span><br/>
-                        
-                    </label>
-                        
-                    <FormGroup>
-                    <label>
-                        <h2>Powtórz hasło</h2> 
-                        <input type={this.state.password_visible? "text" : "password"} 
-                            name="password_confirm"
-                            value={this.state.password_confirm}
-                            onChange={this.handleChange}
-                            maxLength="128"
-                            required
-                        />
-                    </label>
-                    </FormGroup>
+                    <NewPasswordandRepeat action={this.set_passwords_equality}/>
                     
                     
 

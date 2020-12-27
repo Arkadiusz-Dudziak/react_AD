@@ -1,0 +1,20 @@
+
+body
+{
+  background-color: #1a2057;
+}/*body nie działa*/
+.container
+{
+  background-color: #1a2057;
+  color: white;
+}
+.awatar
+{
+  max-width: 130px;
+  max-height: 130px;
+}
+#change_avatar
+{
+  max-width: 130px!important;
+  font-size: 20px;
+}

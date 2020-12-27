@@ -1,7 +1,11 @@
 import React, {Component} from "react"
-import "./indexUP.scss"
+import "./indexOptions.css"
 import NewPasswordandRepeat from "../SharedModules/NewPassword"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { Button } from "react-bootstrap";
+
+
+
 class App_Options extends Component
 {
     constructor()
@@ -9,25 +13,31 @@ class App_Options extends Component
         super();
         this.state =
         {
-            passwords_are_equal: false
+            passwords_are_equal: false,
+            password_correct: false,
+            password: ""
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
     }
-    set_passwords_equality(bool)
+    set_passwords_equality(bool, bool2, pass)
     {
-        this.setState({passwords_are_equal: bool})
+        this.setState({passwords_are_equal: bool, password_correct: bool2, password: pass})
     }
     render()
     {
+        document.body.style = 'background: #1a2057;';
         return(
             <div className="container">
                 <div className="row">
                     <div className="md-3">
-                        Awatar
+                        <img className="awatar" src={require("../awatar.png")}/><br/>
+                        <Button id="change_avatar">ZMIEŃ</Button>
                     </div>
                     <div className="md-9">
+                        <p>jesteś administratorem systemu</p>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
+                        {this.state.passwords_are_equal && this.state.password_correct? <Button>POTWIERDŹ</Button>:null}
                         <h3>Opis konta</h3>
                     </div>
                 </div>
@@ -48,3 +58,4 @@ export default App_Options;
 3. Aktor zapisuje zmiany klikając „Zapisz”
 4. Zmiany wprowadzane są bezzwłocznie
 */
+// TODO przy zmianie hasła 1 i powrotu do poprzedniego - hasła nie są takie same

@@ -33,7 +33,11 @@ class NewPassword extends Component
 
     compare_passwords()
     {
-        {this.state.password != this.state.password_confirm? this.props.action(false): this.props.action(true)}
+        //action (takie same hasła, poprawność, hasło)
+        {this.state.password != this.state.password_confirm? 
+            !this.state.password_correct? this.props.action(false, false, this.state.password): this.props.action(false, true, this.state.password)
+            :!this.state.password_correct? this.props.action(true, false, this.state.password): this.props.action(true, true, this.state.password)
+        }
     }
 
     handleChange(event)
