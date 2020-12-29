@@ -72,23 +72,6 @@ class ObjectsRow extends Component
                         onChange={this.handleInput}
                     />}
                 </td>
-                <td>{!this.state.change?this.state.typ:
-                    <SelectList defaultValue={this.props.objectsDetails.typ} action={this.handler}/>}
-                </td>
-                <td>{!this.state.change?this.state.szerokosc_geograficzna:
-                    <input type="text" 
-                        name="szerokosc_geograficzna"
-                        value={this.state.szerokosc_geograficzna}
-                        onChange={this.handleInput}
-                    />}
-                </td>
-                <td>{!this.state.change?this.state.wysokosc_geograficzna:
-                    <input type="text" 
-                        name="wysokosc_geograficzna"
-                        value={this.state.wysokosc_geograficzna}
-                        onChange={this.handleInput}
-                    />}
-                </td>
                 {this.state.confirm?
                     <td className="ok">
                     <FontAwesomeIcon 

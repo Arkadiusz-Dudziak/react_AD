@@ -35,12 +35,8 @@ class App_Options extends Component
         return(
             <div className="container">
                 <div className="row">
-                    <div className="md-3">
-                        <img className="awatar" src={require("../awatar.png")}/><br/>
-                        <Button id="change_avatar">ZMIEŃ</Button>
-                    </div>
-                    <div className="md-9">
-                        <p>jesteś administratorem systemu</p>
+                    <div className="md-9 pt-4">
+                        <h3>Administrator Obiektu Sportowego</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
                         {this.state.passwords_are_equal && this.state.password_correct? <Button>POTWIERDŹ</Button>:null}

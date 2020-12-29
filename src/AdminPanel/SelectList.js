@@ -25,7 +25,6 @@ class SelectList extends Component
                 <option value="uzytkownik">użytkownik</option>
                 <option value="administrator obiektu">administrator obiektu</option>
                 <option value="moderator">moderator treści</option>
-                <option value="administrator">administrator</option>
             </select>
         )
     }
