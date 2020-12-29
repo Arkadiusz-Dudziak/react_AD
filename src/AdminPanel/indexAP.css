@@ -58,11 +58,6 @@ table tbody:nth-of-type(1) tr:nth-of-type(1) td
   border-top: none !important;
 }
 
-th:hover
-{
-  background-color: burlywood;
-  cursor: pointer;
-}
 
 .verified
 {
