@@ -1,15 +1,16 @@
 import React, { Component } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEdit, faCheck, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faCheck, faCalendarAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SelectList from "./SelectList"
 import RadioButtons from "./RadioButtons";
-import Calendar from "./Calendar"
+import Calendar from "./BanSetter"
 import {Form} from 'react-bootstrap'
 
 library.add(faEdit);
 library.add(faCheck);
 library.add(faCalendarAlt);
+library.add(faTimes);
 
 class UsersRow extends Component
 {
@@ -24,11 +25,15 @@ class UsersRow extends Component
             zweryfikowany: this.props.userDetails.zweryfikowany,
             uprawnienia: this.props.userDetails.uprawnienia,
             ban: this.props.userDetails.ban,
+            poprzedni_zweryfikowany: this.props.userDetails.zweryfikowany,
+            poprzednie_uprawnienia: this.props.userDetails.uprawnienia,
+            poprzedni_ban: this.props.userDetails.ban,
             change: false,
             confirm: false
         }
         this.changeHandler = this.changeHandler.bind(this);
-        this.confimrHandler = this.confimrHandler.bind(this);
+        this.confirmHandler = this.confirmHandler.bind(this);
+        this.cancelHandler = this.cancelHandler.bind(this);
         this.handler = this.handler.bind(this);
         this.handler2 = this.handler2.bind(this);
         this.handleInput = this.handleInput.bind(this);
@@ -38,13 +43,22 @@ class UsersRow extends Component
     {
       this.setState({change:true, confirm:true});
     }
-    confimrHandler(e)
+    confirmHandler(e)
     {
         this.setState({change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
                 this.state.zweryfikowany, this.state.uprawnienia, this.state.ban)})
         //this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)})
+        console.log("confirm");
     }
+    cancelHandler(e)
+    {
+        this.setState({zweryfikowany: this.state.poprzedni_zweryfikowany, uprawnienia: this.state.poprzednie_uprawnienia, ban: this.state.poprzedni_ban, change:false, confirm:false}, 
+            ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
+                this.state.poprzedni_zweryfikowany, this.state.poprzednie_uprawnienia, this.state.poprzedni_ban)})
+        console.log("cancel");
+    }
+
     handler(v)
     {
         this.setState({uprawnienia: v});
@@ -67,7 +81,8 @@ class UsersRow extends Component
     
     setBanDate(value)
     {
-        this.setState({ban: value})
+        this.setState({ban: value});
+        console.log("setBanDate");
     }
 
     
@@ -91,12 +106,26 @@ class UsersRow extends Component
                 </td>
                 {this.state.confirm?
                     <td className="ok">
+                        <span style={{marginRight:"15px"}}>
                         <FontAwesomeIcon 
                           icon="check"
                           cursor="pointer"
-                          onClick={this.confimrHandler}
+                          color="green"
+                          title="zatwierdź zmiany"
+                          onClick={this.confirmHandler}
+                        />
+                        </span>
+                        
+                        <FontAwesomeIcon 
+                          icon="times"
+                          cursor="pointer"
+                          color="red"
+                          title="cofnij zmiany"
+                          onClick={this.cancelHandler}
                         />
                     </td>
+
+                    
                     :
                     <td>
                         <FontAwesomeIcon 

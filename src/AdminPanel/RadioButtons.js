@@ -15,54 +15,46 @@ class RadioButtons extends Component
     {
         this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)});
     }
-    
     render()
     {
         return(
             <div>
                 {this.props.value==="TAK"?
                 <form>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" value="TAK" 
-                                        checked={this.state.value === "TAK"} 
-                                        onChange={this.handleOptionChange} 
-                            />
-                            TAK
-                        </label>
-                    </div>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" value="NIE"
-                                        checked={this.state.value === "NIE"} 
-                                        onChange={this.handleOptionChange} />
-                            NIE
-                        </label>
-                    </div>
+                    <label>
+                        <input type="radio" value="TAK" 
+                                    checked={this.state.value === "TAK"} 
+                                    onChange={this.handleOptionChange} 
+                        />
+                        TAK
+                    </label>
+                
+                    <label>
+                        <input type="radio" value="NIE"
+                                    checked={this.state.value === "NIE"} 
+                                    onChange={this.handleOptionChange} />
+                        NIE
+                    </label>
                 </form>
                 :
                 <form>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" value="TAK"
-                                        checked={this.state.value === "TAK"} 
-                                        onChange={this.handleOptionChange} 
-                            />
-                            TAK
-                        </label>
-                    </div>
-                    <div className="radio">
-                        <label>
-                            <input type="radio" value="NIE" 
-                                        checked={this.state.value === "NIE"} 
-                                        onChange={this.handleOptionChange}
-                            />
-                            NIE
-                        </label>
-                    </div>
+                    <label>
+                        <input type="radio" value="TAK"
+                                    checked={this.state.value === "TAK"} 
+                                    onChange={this.handleOptionChange} 
+                        />
+                        TAK
+                    </label>
+                
+                    <label>
+                        <input type="radio" value="NIE" 
+                                    checked={this.state.value === "NIE"} 
+                                    onChange={this.handleOptionChange}
+                        />
+                        NIE
+                    </label>
                 </form>
                 }
-                
             </div>
         )
     }

@@ -15,13 +15,19 @@ class App_Options extends Component
         {
             passwords_are_equal: false,
             password_correct: false,
-            password: ""
+            password: "",
+            textAreaValue: ""
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     set_passwords_equality(bool, bool2, pass)
     {
         this.setState({passwords_are_equal: bool, password_correct: bool2, password: pass})
+    }
+    handleChange(event) 
+    {
+        this.setState({ textAreaValue: event.target.value });
     }
     render()
     {
@@ -39,10 +45,15 @@ class App_Options extends Component
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
                         {this.state.passwords_are_equal && this.state.password_correct? <Button>POTWIERDŹ</Button>:null}
                         <h3>Opis konta</h3>
+                        <textarea className="form-control"
+                            value={this.state.textAreaValue}
+                            onChange={this.handleChange}
+                            maxLength={250}
+                            rows={4}
+                        />
                     </div>
                 </div>
             </div>
-            
         )
     }
 }

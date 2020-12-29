@@ -119,7 +119,7 @@ class UsersTable extends Component
               <th onClick={e => this.onSort(e, 'login', 2)}>login</th>
               <th onClick={e => this.onSort(e, 'zweryfikowany', 3)}>zweryfikowany</th>
               <th onClick={e => this.onSort(e, 'uprawnienia', 4)}>uprawnienia</th>
-              <th onClick={e => this.onSort(e, 'ban', 5)}>Ban?</th>
+              <th onClick={e => this.onSort(e, 'ban', 5)}>ban</th>
             </tr>
           </thead>
           <tbody id="tbody">

@@ -4,7 +4,7 @@
         "email": "liam.neeson@interia.pl",
         "login": "iWillFindYou",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {        
@@ -12,7 +12,7 @@
         "email": "json.statham@o2.pl",
         "login": "transporter",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -20,7 +20,7 @@
         "email": "james_bond@gmail.pl",
         "login": "agent007",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -28,7 +28,7 @@
         "email": "ezio_auditore@o2.pl",
         "login": "templar_slayer",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -36,7 +36,7 @@
         "email": "lara_croft@interia.pl",
         "login": "TombRaider",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {        
@@ -44,7 +44,7 @@
         "email": "max_payne@o2.pl",
         "login": "boom_headshot",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "2020-12-29"
     },
     {
@@ -52,7 +52,7 @@
         "email": "blazkowicz@gmail.pl",
         "login": "BJ_William",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "2021-02-10"
     },
     {
@@ -76,7 +76,7 @@
         "email": "vern0nroch3@o2.pl",
         "login": "PatriotA",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -84,7 +84,7 @@
         "email": "geralt_z_rivii@gmail.pl",
         "login": "dobry_Mutant",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -101,7 +101,7 @@
         "email": "corvo_attano@interia.pl",
         "login": "SolidMaskedHero",
         "zweryfikowany": "TAK",
-        "uprawnienia": "moderator",
+        "uprawnienia": "moderator treści",
         "ban": "0"
         
     },
@@ -118,7 +118,7 @@
         "email": "gear_marcus@gmail.pl",
         "login": "muscular_fenix",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -126,7 +126,7 @@
         "email": "bruce_wayne@gmail.pl",
         "login": "Nocny_Marek",
         "zweryfikowany": "TAK",
-        "uprawnienia": "moderator",
+        "uprawnienia": "moderator treści",
         "ban": "0"
     },
     {
@@ -142,7 +142,7 @@
         "email": "stallone@o2.pl",
         "login": "Rocky_Balboa",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -150,7 +150,7 @@
         "email": "stallone@gmail.pl",
         "login": "Pierwszy_Rambo",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "0"
     },
     {
@@ -166,7 +166,7 @@
         "email": "usain_bolt@o2.pl",
         "login": "fastest_man",
         "zweryfikowany": "NIE",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "2022-04-15"
     },
     {
@@ -190,7 +190,7 @@
         "email": "watch_dogs@gmail.pl",
         "login": "uwaga_psy",
         "zweryfikowany": "TAK",
-        "uprawnienia": "uzytkownik",
+        "uprawnienia": "użytkownik",
         "ban": "pernamentny"
     }
 ]
