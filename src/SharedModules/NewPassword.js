@@ -114,6 +114,7 @@ class NewPassword extends Component
                     <FontAwesomeIcon 
                         icon={this.state.password_visible? "eye" : "eye-slash"}
                         onClick={this.togglePassVisible}
+                        className="fa-lg"
                         cursor="pointer"
                     />
                     </FormGroup>

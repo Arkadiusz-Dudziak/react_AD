@@ -76,7 +76,7 @@ class FormLogin extends Component
                         <Button type="submit">ZALOGUJ</Button>
                     </label>
                         <br/>
-                        Nie masz konta? Śmiało, możesz się zarejestrować
+                        Nie masz konta? Możesz się zarejestrować
                         <br/>
                     <label>
                         <Button onClick={()=>this.props.action()}>REJESTRACJA</Button>
