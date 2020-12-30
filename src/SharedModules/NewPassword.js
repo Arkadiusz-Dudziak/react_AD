@@ -34,7 +34,7 @@ class NewPassword extends Component
     compare_passwords()
     {
         //action (takie same hasła, poprawność, hasło)
-        {this.state.password != this.state.password_confirm? 
+        {this.state.password !== this.state.password_confirm? 
             !this.state.password_correct? this.props.action(false, false, this.state.password): this.props.action(false, true, this.state.password)
             :!this.state.password_correct? this.props.action(true, false, this.state.password): this.props.action(true, true, this.state.password)
         }
@@ -138,7 +138,7 @@ class NewPassword extends Component
                         />
                     </label>
                     <label style={this.state.passRepeat_visible? {display:"block"}:{display: "none"}}>
-                        {this.state.password != this.state.password_confirm? 
+                        {this.state.password !== this.state.password_confirm? 
                             <span style={{color:"#e62929"}}>Hasła nie są identyczne!</span>
                             :
                             null

@@ -18,8 +18,9 @@ class FormLogin extends Component
             password_visible: false,
             forgotten_password: false
         }
-        this.togglePassVisible = this.togglePassVisible.bind(this)
-        this.toggleForgotten = this.toggleForgotten.bind(this)
+        this.togglePassVisible = this.togglePassVisible.bind(this);
+        this.toggleForgotten = this.toggleForgotten.bind(this);
+        this.logIn = this.logIn.bind(this);
     }
     togglePassVisible(event)
     {
@@ -36,12 +37,16 @@ class FormLogin extends Component
                 forgotten_password: !this.state.forgotten_password
             });
     }
+    logIn()
+    {
+        console.log("proces logowania");
+    }
     render()
     {
         return(
             <div>
                 <h1>LOGOWANIE</h1>
-                <Form>
+                <Form onSubmit={this.logIn}>
                     <FormGroup>
                     <label>
                         <h2>Email lub login</h2> 
@@ -68,7 +73,7 @@ class FormLogin extends Component
                     <label className="forgot_password" onClick={this.toggleForgotten}>Nie pamiętam hasła</label><br/>
                     
                     <label>
-                        <Button>ZALOGUJ</Button>
+                        <Button type="submit">ZALOGUJ</Button>
                     </label>
                         <br/>
                         Nie masz konta? Śmiało, możesz się zarejestrować

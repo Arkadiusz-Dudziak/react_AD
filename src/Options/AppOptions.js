@@ -16,10 +16,12 @@ class App_Options extends Component
             passwords_are_equal: false,
             password_correct: false,
             password: "",
-            textAreaValue: ""
+            prev_textAreaValue: "Przykładowy opis konta.",
+            textAreaValue: "Przykładowy opis konta."
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.sendChangeToAPI = this.sendChangeToAPI.bind(this);
     }
     set_passwords_equality(bool, bool2, pass)
     {
@@ -29,13 +31,18 @@ class App_Options extends Component
     {
         this.setState({ textAreaValue: event.target.value });
     }
+    sendChangeToAPI(event)
+    {
+        this.setState({prev_textAreaValue: this.state.textAreaValue});
+        console.log("Wyślij dane do API.");
+    }
     render()
     {
         document.body.style = 'background: #1a2057;';
         return(
             <div className="container">
                 <div className="row">
-                    <div className="md-9 pt-4">
+                    <div className="col-md-9 pt-4">
                         <h3>Administrator Obiektu Sportowego</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
@@ -47,6 +54,11 @@ class App_Options extends Component
                             maxLength={250}
                             rows={4}
                         />
+                        {this.state.prev_textAreaValue !== this.state.textAreaValue?
+                            <Button onClick={this.sendChangeToAPI}>ZATWIERDŹ</Button>
+                            :
+                            null
+                        }
                     </div>
                 </div>
             </div>
