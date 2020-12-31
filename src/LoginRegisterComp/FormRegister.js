@@ -4,14 +4,9 @@ import RegulationsPopup from "./RegulationsPopup"
 import {Button, Form, FormGroup} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import LinkConfirmPopup from "./LinkConfirmNotification"
+import LinkConfirmPopup from "./LinkConfirmPopup"
 import NewPasswordandRepeat from "../SharedModules/NewPassword"
 
-library.add(faEye);
-library.add(faEyeSlash);
 class FormRegister extends Component
 {
     constructor()
@@ -45,12 +40,16 @@ class FormRegister extends Component
     handleSubmit(event)
     {   
         event.preventDefault();
-        if(this.state.password === this.state.password_confirm && this.state.password_correct && this.state.regulations_ok)
+        if(this.state.password  && this.state.password_correct && this.state.regulations_ok)
         {
-            this.setState({showRegistrationEnd: true})
+            this.setState({showRegistrationEnd: true});
         }
         else
-            console.log("sprawdź ponownie formularz rejestracji!")
+        {
+            console.log("sprawdź ponownie formularz rejestracji!");
+            console.log(this.state.password, this.state.password_correct, this.state.regulations_ok);
+        }
+            
     }
 
     handleRegulationPopup(event)
@@ -60,6 +59,7 @@ class FormRegister extends Component
             showRegulations: !this.state.showRegulations,
         });
     }
+
     handleRegistrationEnd(event)
     {
         this.setState(
@@ -73,11 +73,12 @@ class FormRegister extends Component
         this.setState({visible: false})
     }
 
-
-    set_passwords_equality(bool)
+    set_passwords_equality(bool, bool2, pass)
     {
-        this.setState({passwords_are_equal: bool})
+        this.setState({passwords_are_equal: bool, password_correct: bool2, password: pass})
     }
+
+
 
 
     render()

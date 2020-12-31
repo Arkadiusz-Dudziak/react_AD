@@ -49,6 +49,7 @@ html, body, .app
   bottom: 0%;
   margin: auto;
   background: #b3d0ff;
+  overflow-y: auto;
   color: black;
 }
 .popup_inner h1
@@ -126,6 +127,7 @@ html, body, .app
   margin: auto;
   background: #b3d0ff;
   color: black;
+  font-size: large;
 }
 /*pomoc*/
 .Help_popup 
@@ -206,4 +208,10 @@ input[type=checkbox]
   -o-transform: scale(1.5); /* Opera */
   padding: 10px;
   margin: 10px;
+}
+
+.pass
+{
+  margin-left: 37px;
+  margin-right: 10px;
 }

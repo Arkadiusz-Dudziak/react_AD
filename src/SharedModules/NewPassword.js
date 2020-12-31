@@ -102,6 +102,7 @@ class NewPassword extends Component
                     <label>
                         <h2>Hasło</h2> 
                         <input type={this.state.password_visible? "text" : "password"}
+                            className="pass"
                             name="password"
                             value={this.state.password}
                             onChange={this.handlePasswordChange}
