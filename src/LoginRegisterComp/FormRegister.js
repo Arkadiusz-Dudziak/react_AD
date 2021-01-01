@@ -146,7 +146,7 @@ class FormRegister extends Component
                         <Button type="submit">ZAREJESTRUJ SIĘ</Button>
                     </label>
                     <br/>
-                    Jednak mam konto, chce się zalogować
+                        Jednak mam konto, chce się zalogować
                     <br/>
                     <Button onClick={()=>this.props.action()}>LOGOWANIE</Button>
                     <br/>

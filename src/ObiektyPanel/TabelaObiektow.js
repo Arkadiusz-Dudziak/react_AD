@@ -26,6 +26,7 @@ class TabelaObiektow extends Component
       this.changeHandler = this.changeHandler.bind(this);
       this.tableChangeConfirm = this.tableChangeConfirm.bind(this);
       this.handleSync = this.handleSync.bind(this);
+      this.gotoATmoduleAddObject = this.gotoATmoduleAddObject.bind(this);
     }
   
 
@@ -46,6 +47,11 @@ class TabelaObiektow extends Component
       console.log("Handle sync clicked!");
       console.log(this.state.changed_objects);
       this.setState({are_any_changes:false});
+    }
+
+    gotoATmoduleAddObject()
+    {
+      console.log("AT moduł");
     }
 
     handler(v)
@@ -78,7 +84,7 @@ class TabelaObiektow extends Component
                   />
                 </th>
                 :<th></th>}
-              <th style={{backgroundColor:"green", color:"white"}}>Dodaj obiekt</th>
+              <th onClick={this.gotoATmoduleAddObject} style={{backgroundColor:"green", color:"white", cursor:"pointer"}}>Dodaj obiekt</th>
             </tr>
           </thead>
           <tbody id="tbody">

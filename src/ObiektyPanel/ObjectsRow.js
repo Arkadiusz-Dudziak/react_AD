@@ -1,10 +1,14 @@
 import React, { Component } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEdit, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import DataAdminObject from "../DataAdminObject.json"
+import Select from 'react-select'
+//import Filter from "./Filter"
 import SelectList from "./SelectList"
 library.add(faEdit);
 library.add(faCheck);
+library.add(faTimes);
 class ObjectsRow extends Component
 {
     constructor(props)
@@ -15,9 +19,7 @@ class ObjectsRow extends Component
             id: this.props.objectsDetails.id,
             nazwa: this.props.objectsDetails.nazwa,
             administrator: this.props.objectsDetails.administrator,
-            typ: this.props.objectsDetails.typ,
-            szerokosc_geograficzna: this.props.objectsDetails.szerokosc_geograficzna,
-            wysokosc_geograficzna: this.props.objectsDetails.wysokosc_geograficzna,
+            prev_administrator: this.props.objectsDetails.administrator,
             change: false,
             confirm: false
         }
@@ -25,6 +27,8 @@ class ObjectsRow extends Component
         this.confimrHandler = this.confimrHandler.bind(this);
         this.handler = this.handler.bind(this);
         this.handleInput = this.handleInput.bind(this);
+        this.handleAdminChange = this.handleAdminChange.bind(this);
+        this.cancelHandler = this.cancelHandler.bind(this);
     }
     changeHandler()
     {
@@ -33,9 +37,7 @@ class ObjectsRow extends Component
     confimrHandler(e)
     {
         this.setState({change:false, confirm:false}, 
-            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.administrator, 
-                this.state.typ, this.state.szerokosc_geograficzna, this.state.wysokosc_geograficzna)})
-        //this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)})
+            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.administrator)})
     }
     handler(v)
     {
@@ -45,52 +47,71 @@ class ObjectsRow extends Component
     handleInput(event)
     {
         const  {name, value, type, checked} = event.target
-        /*type === "checkbox" ? this.setState({[name]: checked}) 
-        :*/
-        //console.log(name+" "+value);
         this.setState({
             [name] : value
         })
     }
 
+    handleAdminChange = selectedOption => {
+        this.setState({ administrator: selectedOption.label });
+        //console.log(`Option selected:`, selectedOption);
+      };
+
+    cancelHandler(e)
+    {
+        this.setState({administrator: this.state.prev_administrator, change:false, confirm:false}, 
+            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.prev_administrator)})
+        console.log("cancel");
+    }
+
     render()
     {
+        const administrators = DataAdminObject.map(d => ({
+            "value": d.login,
+            "label": d.login
+        }))
         return(
             <tr key={this.props.index} data-item={this.props.objectsDetails}>
                 <td>{this.props.objectsDetails.id}</td>
-                <td>{!this.state.change?this.state.nazwa:
-                    <input type="text" 
-                        name="nazwa"
-                        value={this.state.nazwa} 
-                        onChange={this.handleInput}
-                    />}
-                </td>
+                <td>{this.state.nazwa}</td>
                 <td>{!this.state.change?this.state.administrator:
-                    <input type="text" 
-                        name="administrator"
-                        value={this.state.administrator} 
-                        onChange={this.handleInput}
-                    />}
+                        <Select 
+                            name="administrator" 
+                            placeholder="szukaj" 
+                            options={administrators} 
+                            onChange={this.handleAdminChange}
+                        />
+                    }
                 </td>
                 {this.state.confirm?
                     <td className="ok">
-                    <FontAwesomeIcon 
-                          icon="check"
-                          cursor="pointer"
-                          onClick={this.confimrHandler}
-                      />
+                         <span style={{marginRight:"15px"}}>
+                         <FontAwesomeIcon 
+                            icon="check"
+                            cursor="pointer"
+                            color="green"
+                            title="zatwierdź zmiany"
+                            onClick={this.confimrHandler}
+                        />
+                         </span>
+                        
+                        <FontAwesomeIcon 
+                            icon="times"
+                            cursor="pointer"
+                            color="red"
+                            title="cofnij zmiany"
+                            onClick={this.cancelHandler}
+                        />
                     </td>
                     :
                     <td>
                         <FontAwesomeIcon 
-                          icon="edit"
-                          cursor="pointer"
-                          onClick={this.changeHandler}
-                      />
+                            icon="edit"
+                            cursor="pointer"
+                            onClick={this.changeHandler}
+                        />
                     </td>
-                      
-                }
-                      
+                }    
             </tr>
         )
     }
