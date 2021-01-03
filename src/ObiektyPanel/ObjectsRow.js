@@ -53,7 +53,7 @@ class ObjectsRow extends Component
     }
 
     handleAdminChange = selectedOption => {
-        this.setState({ administrator: selectedOption.label });
+        this.setState({ administrator: selectedOption.value });
         //console.log(`Option selected:`, selectedOption);
       };
 
@@ -66,10 +66,24 @@ class ObjectsRow extends Component
 
     render()
     {
+        var no_administrator = {"value": "", "label": "brak", "color": "red"}
         const administrators = DataAdminObject.map(d => ({
             "value": d.login,
             "label": d.login
         }))
+        administrators.unshift(no_administrator)
+
+        const customStyles = {
+            option: (provided, state) => ({
+              ...provided,
+              color: state.value ? 'green' : 'black',
+              color: state.value==="" ? 'red':null
+            }),
+            singleValue: (provided, state) => {          
+              return { ...provided };
+            }
+          }
+
         return(
             <tr key={this.props.index} data-item={this.props.objectsDetails}>
                 <td>{this.props.objectsDetails.id}</td>
@@ -80,6 +94,7 @@ class ObjectsRow extends Component
                             placeholder="szukaj" 
                             options={administrators} 
                             onChange={this.handleAdminChange}
+                            styles={customStyles}
                         />
                     }
                 </td>

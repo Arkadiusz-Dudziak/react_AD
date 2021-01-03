@@ -6,9 +6,6 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faSync);
-//import update from 'react-addons-update';
-//npm i react-addons-update   ->  do clickList
-//import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 class TabelaObiektow extends Component 
 {

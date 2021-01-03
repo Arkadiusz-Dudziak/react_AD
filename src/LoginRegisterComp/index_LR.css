@@ -53,7 +53,7 @@ html, body, .app
   overflow-y: auto;
   color: black;
 }
-.popup_inner h1
+.popup_inner h2
 {
 
   color: blue;

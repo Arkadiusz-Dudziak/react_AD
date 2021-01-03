@@ -100,7 +100,7 @@ class NewPassword extends Component
             <div>
                 <FormGroup>
                     <label>
-                        <h2>Hasło</h2> 
+                        <h4>Hasło</h4> 
                         <input type={this.state.password_visible? "text" : "password"}
                             className="pass"
                             name="password"
@@ -129,7 +129,7 @@ class NewPassword extends Component
 
                     <FormGroup>
                     <label>
-                        <h2>Powtórz hasło</h2> 
+                        <h4>Powtórz hasło</h4> 
                         <input type={this.state.password_visible? "text" : "password"} 
                             name="password_confirm"
                             value={this.state.password_confirm}
