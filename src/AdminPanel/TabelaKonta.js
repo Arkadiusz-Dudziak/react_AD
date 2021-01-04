@@ -41,8 +41,8 @@ class UsersTable extends Component
         jsonData.uprawnienia = uprawnienia;
         jsonData.ban = ban;
 
-        //console.log(jsonData);
-        console.log("tableConfirm, ", ban)
+        console.log("tableConfirm: ",jsonData);
+        //console.log("tableConfirm, ", ban)
         this.setState({edytowany_uzytkownik:jsonData, are_any_changes:true});
         //console.log("send data to API");
     }

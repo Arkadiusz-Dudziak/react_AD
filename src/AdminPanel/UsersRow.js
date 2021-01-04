@@ -61,15 +61,17 @@ class UsersRow extends Component
         this.setState({zweryfikowany: this.state.poprzedni_zweryfikowany, uprawnienia: this.state.poprzednie_uprawnienia, ban: this.state.poprzedni_ban, change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
                 this.state.poprzedni_zweryfikowany, this.state.poprzednie_uprawnienia, this.state.poprzedni_ban)})
-        console.log("cancel");
+        console.log("cancel + ", this.state.poprzednie_uprawnienia);
     }
 
     handler(v)
     {
+        this.setState({poprzednie_uprawnienia: this.state.uprawnienia});
         this.setState({uprawnienia: v});
     }
     handler2(v)
     {
+        this.setState({poprzedni_zweryfikowany: this.state.zweryfikowany});
         this.setState({zweryfikowany: v});
     }
 
@@ -86,6 +88,7 @@ class UsersRow extends Component
     
     setBanDate(value)
     {
+        this.setState({poprzedni_ban: this.state.ban});
         this.setState({ban: value});
         console.log("setBanDate");
     }
