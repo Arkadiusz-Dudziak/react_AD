@@ -53,21 +53,24 @@ class ObjectsRow extends Component
     }
 
     handleAdminChange = selectedOption => {
+        this.setState({prev_administrator: this.state.administrator});
         this.setState({ administrator: selectedOption.value });
         //console.log(`Option selected:`, selectedOption);
       };
 
     cancelHandler(e)
     {
-        this.setState({change:false, confirm:false}, 
+        this.setState(({administrator:this.state.prev_administrator, change:false, confirm:false}), 
             ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.prev_administrator)})
-        console.log("cancel");
+        console.log("cancel + ",this.state.prev_administrator);
+        console.log("cancel + ",this.state.administrator);
     }
 
     goToObjectEdit()
     {
         console.log("Do modułu edytowania/zarządzania obiektem ", this.state.id)
     }
+
 
     render()
     {

@@ -57,8 +57,8 @@ class UsersRow extends Component
         console.log("confirm");
     }
     cancelHandler(e)
-    {
-        this.setState({change:false, confirm:false}, 
+    {//funkcja działa tak, że przywraca zmieniane dane na takie przed synchronizacją z bazą danych - czyli zmieniając jednego użytkownika dwa razy, za drugim razem cofnie zmiany 
+        this.setState({zweryfikowany: this.state.poprzedni_zweryfikowany, uprawnienia: this.state.poprzednie_uprawnienia, ban: this.state.poprzedni_ban, change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
                 this.state.poprzedni_zweryfikowany, this.state.poprzednie_uprawnienia, this.state.poprzedni_ban)})
         console.log("cancel");
