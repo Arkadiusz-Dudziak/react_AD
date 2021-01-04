@@ -22,9 +22,9 @@ class SelectList extends Component
     {
         return(
             <select defaultValue={this.props.defaultValue} value={this.state.value} onChange={this.handleChange}>
-                <option value="uzytkownik">użytkownik</option>
+                <option value="użytkownik">użytkownik</option>
                 <option value="administrator obiektu">administrator obiektu</option>
-                <option value="moderator">moderator treści</option>
+                <option value="moderator treści">moderator treści</option>
             </select>
         )
     }

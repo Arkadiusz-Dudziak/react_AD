@@ -35,7 +35,8 @@ class TabelaObiektow extends Component
         jsonData.nazwa = nazwa;
         jsonData.administrator = administrator;
 
-        console.log(jsonData);
+        //console.log(jsonData);
+        console.log("tableConfirm")
         this.setState({changed_objects:jsonData,are_any_changes:true})
     }
 

@@ -15,7 +15,7 @@ class App_ObiektyPanel extends Component
     {
         return(
             <div>
-                <h1>Panel Administratora (Obiekty)</h1>
+                <h1>Panel Administratora - zarządzanie administracją obiektów</h1>
                 <TabelaObiektow/>
             </div>
         )

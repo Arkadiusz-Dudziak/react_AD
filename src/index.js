@@ -6,11 +6,11 @@ import "./index.css"
 
 import AppObiektyPanel from './ObiektyPanel/AppObiektyPanel'
 
-//import AppLoginRegister from './LoginRegisterComp/AppLoginRegister'; //logowanie, rejestracja
+//import AppLoginRegister from './LoginRegister/AppLoginRegister'; //logowanie, rejestracja
 
 //import AppAdminPanel from './AdminPanel/AppKontaPanel'; //panel z kontami uzytkownikow
 
-//import AppOptions from './Options/AppOptions';       
+//import AppOptions from './Options/AppOptions';     
 
 
 import * as serviceWorker from './serviceWorker';

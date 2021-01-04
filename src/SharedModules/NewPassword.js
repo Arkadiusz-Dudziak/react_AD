@@ -90,10 +90,6 @@ class NewPassword extends Component
         )
     }
 
-
-
-
-
     render()
     {
         return(

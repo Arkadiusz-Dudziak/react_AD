@@ -1,14 +1,13 @@
 import React, { Component } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faEdit, faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faCheck, faTimes, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import DataAdminObject from "../DataAdminObject.json"
 import Select from 'react-select'
-//import Filter from "./Filter"
-import SelectList from "./SelectList"
 library.add(faEdit);
 library.add(faCheck);
 library.add(faTimes);
+library.add(faUserEdit);
 class ObjectsRow extends Component
 {
     constructor(props)
@@ -29,6 +28,7 @@ class ObjectsRow extends Component
         this.handleInput = this.handleInput.bind(this);
         this.handleAdminChange = this.handleAdminChange.bind(this);
         this.cancelHandler = this.cancelHandler.bind(this);
+        this.goToObjectEdit = this.goToObjectEdit.bind(this);
     }
     changeHandler()
     {
@@ -59,9 +59,14 @@ class ObjectsRow extends Component
 
     cancelHandler(e)
     {
-        this.setState({administrator: this.state.prev_administrator, change:false, confirm:false}, 
+        this.setState({change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.prev_administrator)})
         console.log("cancel");
+    }
+
+    goToObjectEdit()
+    {
+        console.log("Do modułu edytowania/zarządzania obiektem ", this.state.id)
     }
 
     render()
@@ -76,7 +81,6 @@ class ObjectsRow extends Component
         const customStyles = {
             option: (provided, state) => ({
               ...provided,
-              color: state.value ? 'green' : 'black',
               color: state.value==="" ? 'red':null
             }),
             singleValue: (provided, state) => {          
@@ -94,6 +98,7 @@ class ObjectsRow extends Component
                             placeholder="szukaj" 
                             options={administrators} 
                             onChange={this.handleAdminChange}
+                            value={{value: this.state.administrator, label: this.state.administrator}}
                             styles={customStyles}
                         />
                     }
@@ -101,30 +106,52 @@ class ObjectsRow extends Component
                 {this.state.confirm?
                     <td className="ok">
                          <span style={{marginRight:"15px"}}>
-                         <FontAwesomeIcon 
-                            icon="check"
-                            cursor="pointer"
-                            color="green"
-                            title="zatwierdź zmiany"
-                            onClick={this.confimrHandler}
-                        />
+                            <FontAwesomeIcon 
+                                icon="check"
+                                cursor="pointer"
+                                color="green"
+                                title="zatwierdź zmiany"
+                                onClick={this.confimrHandler}
+                            />
                          </span>
                         
-                        <FontAwesomeIcon 
-                            icon="times"
+                         <span style={{marginRight:"15px"}}>
+                            <FontAwesomeIcon 
+                                icon="times"
+                                cursor="pointer"
+                                color="red"
+                                title="cofnij zmiany"
+                                onClick={this.cancelHandler}
+                            />
+                         </span>
+                        
+                        <FontAwesomeIcon
+                            icon="edit"
                             cursor="pointer"
-                            color="red"
-                            title="cofnij zmiany"
-                            onClick={this.cancelHandler}
+                            title="Edytuj obiekt sportowy"
+                            onClick={this.goToObjectEdit}
                         />
+
                     </td>
                     :
                     <td>
-                        <FontAwesomeIcon 
+                        <span style={{marginRight:"15px"}}>
+                            <FontAwesomeIcon 
+                                icon="user-edit"
+                                cursor="pointer"
+                                title="Zmień administratora obiektu sportowego"
+                                onClick={this.changeHandler}
+                            />
+                        </span>
+                        
+
+                        <FontAwesomeIcon
                             icon="edit"
                             cursor="pointer"
-                            onClick={this.changeHandler}
+                            title="Edytuj obiekt sportowy"
+                            onClick={this.goToObjectEdit}
                         />
+
                     </td>
                 }    
             </tr>

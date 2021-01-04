@@ -2,57 +2,36 @@
     {
         "id": 1,
         "nazwa": "boisko piłkarskie pod Dębem",
-        "administrator": "agent007",
-        "typ": "boisko piłkarskie",
-        "szerokosc_geograficzna": "52.41134",
-        "wysokosc_geograficzna": "16.92121"
+        "administrator": "admin2"
     },
     {        
         "id": 2,
         "nazwa": "Orlik \"Bocianie Gniazdo\"",
-        "administrator": "transporter",
-        "typ": "boisko piłkarskie",
-        "szerokosc_geograficzna": "52.41134",
-        "wysokosc_geograficzna": "16.92323"
+        "administrator": "3admin3"
     },
     {
         "id": 3,
         "nazwa": "Estadio Bernabeu",
-        "administrator": "SolidMaskedHero",
-        "typ": "boisko piłkarskie",
-        "szerokosc_geograficzna": "52.42321",
-        "wysokosc_geograficzna": "16.98222"
+        "administrator": "3admin3"
     },
     {
         "id": 4,        
         "nazwa": "Camp Nou",
-        "administrator": "templar_slayer",
-        "typ": "boisko piłkarskie",
-        "szerokosc_geograficzna": "52.43201",
-        "wysokosc_geograficzna": "18.99878"
+        "administrator": "adam_070"
     },
     {
         "id": 5,
         "nazwa": "Lodowisko \"Arktos\"",
-        "administrator": "TombRaider",
-        "typ": "lodowisko",
-        "szerokosc_geograficzna": "52.35611",
-        "wysokosc_geograficzna": "16.92002"
+        "administrator": "admin341"
     },
     {
         "id": 6,
         "nazwa": "\"Głębia Poznania\"",
-        "administrator": "",
-        "typ": "basen",
-        "szerokosc_geograficzna": "52.15611",
-        "wysokosc_geograficzna": "16.72002"
+        "administrator": ""
     },
     {
         "id": 7,
         "nazwa": "Lodowisko \"Wywrotka\"",
-        "administrator": "",
-        "typ": "lodowisko",
-        "szerokosc_geograficzna": "52.25611",
-        "wysokosc_geograficzna": "16.12002"
+        "administrator": ""
     }
 ]

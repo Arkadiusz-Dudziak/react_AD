@@ -22,6 +22,7 @@ class App_Options extends Component
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.sendChangeToAPI = this.sendChangeToAPI.bind(this);
+        this.setNewPassword = this.setNewPassword.bind(this);
     }
     set_passwords_equality(bool, bool2, pass)
     {
@@ -36,6 +37,10 @@ class App_Options extends Component
         this.setState({prev_textAreaValue: this.state.textAreaValue});
         console.log("Wyślij dane do API.");
     }
+    setNewPassword()
+    {
+        console.log("Wyślij i ustaw nowe hasło")
+    }
     render()
     {
         document.body.style = 'background: #1a2057;';
@@ -46,7 +51,7 @@ class App_Options extends Component
                         <h3>Administrator Obiektu Sportowego</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
-                        {this.state.passwords_are_equal && this.state.password_correct? <Button>POTWIERDŹ</Button>:null}
+                        {this.state.passwords_are_equal && this.state.password_correct? <Button onClick={this.setNewPassword}>POTWIERDŹ</Button>:null}
                         <h3>Opis konta</h3>
                         <textarea className="form-control"
                             value={this.state.textAreaValue}

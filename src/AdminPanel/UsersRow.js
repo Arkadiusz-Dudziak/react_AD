@@ -45,15 +45,20 @@ class UsersRow extends Component
     }
     confirmHandler(e)
     {
+        this.state.uprawnienia==="użytkownik"?
         this.setState({change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
                 this.state.zweryfikowany, this.state.uprawnienia, this.state.ban)})
+            :
+            this.setState({change:false, confirm:false, ban:""}, 
+                ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
+                    this.state.zweryfikowany, this.state.uprawnienia, this.state.ban)})
         //this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)})
         console.log("confirm");
     }
     cancelHandler(e)
     {
-        this.setState({zweryfikowany: this.state.poprzedni_zweryfikowany, uprawnienia: this.state.poprzednie_uprawnienia, ban: this.state.poprzedni_ban, change:false, confirm:false}, 
+        this.setState({change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
                 this.state.poprzedni_zweryfikowany, this.state.poprzednie_uprawnienia, this.state.poprzedni_ban)})
         console.log("cancel");
@@ -95,13 +100,16 @@ class UsersRow extends Component
                 <td>{this.state.email}</td>
                 <td>{this.state.login}</td>
                 <td>{!this.state.change?this.state.zweryfikowany:
-                    <RadioButtons value={this.props.userDetails.zweryfikowany} action={this.handler2}/>}
+                    <RadioButtons value={this.state.zweryfikowany} action={this.handler2}/>}
                 </td>
                 <td>{!this.state.change?this.state.uprawnienia:
-                    <SelectList defaultValue={this.props.userDetails.uprawnienia} action={this.handler}/>}
+                    <SelectList defaultValue={this.state.uprawnienia} action={this.handler}/>}
                 </td>
                 <td>{!this.state.change?this.state.ban:
-                        <Calendar date={this.state.ban} action={this.setBanDate}/>
+                        this.state.uprawnienia==="użytkownik"?
+                            <Calendar date={this.state.ban} action={this.setBanDate}/>
+                        :
+                        <span style={{color:"red"}}>Operacja niemożliwa</span>
                     }
                 </td>
                 {this.state.confirm?
@@ -124,8 +132,6 @@ class UsersRow extends Component
                           onClick={this.cancelHandler}
                         />
                     </td>
-
-                    
                     :
                     <td>
                         <FontAwesomeIcon 
