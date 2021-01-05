@@ -3,7 +3,7 @@ import "./indexOptions.css"
 import NewPasswordandRepeat from "../SharedModules/NewPassword"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from "react-bootstrap";
-
+import { getAccountDescription, setNewAccountDescription, setNewPassword } from "../FetchData";
 
 
 class App_Options extends Component
@@ -13,34 +13,45 @@ class App_Options extends Component
         super();
         this.state =
         {
+            userId: 12,
             passwords_are_equal: false,
             password_correct: false,
             password: "",
-            prev_textAreaValue: "Przykładowy opis konta.",
-            textAreaValue: "Przykładowy opis konta."
+            prev_textAreaValue: "przykladowy tekst.",
+            textAreaValue: "przykladowy tekst."
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.sendChangeToAPI = this.sendChangeToAPI.bind(this);
         this.setNewPassword = this.setNewPassword.bind(this);
     }
+    
     set_passwords_equality(bool, bool2, pass)
     {
         this.setState({passwords_are_equal: bool, password_correct: bool2, password: pass})
     }
+
+    componentDidMount()
+    {//TODO 
+        //var obj = JSON.parse(getAccountDescription(this.state.userId));
+        //this.setState(obj[0].opis_konta);
+    }
+
     handleChange(event) 
     {
         this.setState({ textAreaValue: event.target.value });
     }
-    sendChangeToAPI(event)
+
+    setNewDescription(event)
     {
         this.setState({prev_textAreaValue: this.state.textAreaValue});
-        console.log("Wyślij dane do API.");
+        setNewAccountDescription(this.state.userId, this.state.textAreaValue)
     }
+
     setNewPassword()
     {
-        console.log("Wyślij i ustaw nowe hasło")
+        setNewPassword(this.state.userId, this.state.password)
     }
+
     render()
     {
         document.body.style = 'background: #1a2057;';

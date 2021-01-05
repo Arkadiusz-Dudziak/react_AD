@@ -57,9 +57,9 @@ class TabelaObiektow extends Component
     handleSync()
     {//synchronizacja tabeli z bazą danych 
       console.log("Handle sync clicked!");
-      console.log(this.state.changed_object);
-      this.setState({are_any_changes:false});
-
+      //console.log(this.state.changed_object);
+      //this.setState({are_any_changes:false});
+      window.location.reload(false);
     }
 
     gotoATmoduleAddObject()
@@ -103,7 +103,7 @@ class TabelaObiektow extends Component
           <tbody id="tbody">
             {newdata.map(function(objectsDetails, index) {
               return (
-                <ObjectsRow index={index} objectsDetails={objectsDetails} action={self.tableChangeConfirm}/> 
+                <ObjectsRow key={objectsDetails.id} index={index} objectsDetails={objectsDetails} action={self.tableChangeConfirm}/> 
               );
             })}
           </tbody>

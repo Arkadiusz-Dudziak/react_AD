@@ -79,8 +79,7 @@ class UsersTable extends Component
       console.log("Handle sync clicked!");
       //this.setState({are_any_changes:false});
       //this.setState({data: getUsersData()})
-      this.forceUpdate();
-      //window.location.reload(false)
+      window.location.reload(false);
     }
 
     changeHandler()

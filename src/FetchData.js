@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+//--------------------------ZARZĄDZANIE ADMINISTRACJĄ OBIEKTÓW-------------------
 export function getObjectsAdminData()
 {
     /*axios.get('/obiekty_i_admin')
@@ -90,6 +91,30 @@ export function getObjectsAdmins()
         }
     ]
 }
+
+
+export function setObjectAdmin(objectId, adminLogin)
+{//można też usunąć uprawnienia administratora obiektu dając pusty adminLogin
+    console.log("setObjectAdmin");
+    let params = {
+        id_obiektu: objectId,
+        login_administratora: adminLogin,
+    };
+    /*axios.post('/admin_do_obiektu', {params})
+    .then((response) => {
+        if (response !== {})
+        return response;
+    else throw Error("Błąd dostępu do danych");
+    })
+    .catch((error) => {
+        throw Error("Brak poprawnej odpowiedzi serwera API!");
+    })*/
+}
+
+
+
+//-------------------ZARZĄDZANIE UŻYTKOWNIKAMI-----------------------------------
+
 
 export function getUsersData()
 {
@@ -300,25 +325,6 @@ export function getUsersData()
     ]
 }
 
-
-export function setObjectAdmin(objectId, adminLogin)
-{//można też usunąć uprawnienia administratora obiektu dając pusty adminLogin
-    console.log("setObjectAdmin");
-    let params = {
-        id_obiektu: objectId,
-        login_administratora: adminLogin,
-    };
-    /*axios.post('/admin_do_obiektu', {params})
-    .then((response) => {
-        if (response !== {})
-        return response;
-    else throw Error("Błąd dostępu do danych");
-    })
-    .catch((error) => {
-        throw Error("Brak poprawnej odpowiedzi serwera API!");
-    })*/
-}
-
 export function setAccountPermissons(userId, accountPermissions)
 {
     console.log("setAccountPermissions, ", userId, " uprawnienia: ", accountPermissions)
@@ -399,3 +405,60 @@ export function clearBan(userId)
 
 
 
+//--------------------------OPCJE KONTA-------------------------------------
+
+export function getAccountDescription(userId)
+{
+    //console.log("getAccountDescription, ", userId)
+    /*axios.get('/opis_konta', userId)
+    .then((response) => {
+        if (response !== {})
+        return response;
+    else throw Error("Błąd dostępu do danych");
+    })
+    .catch((error) => {
+        throw Error("Brak poprawnej odpowiedzi serwera API!");
+    })*/
+    return [
+        {
+            "opis_konta": "Przykładowy opis konta."
+        }
+    ]
+
+}
+
+export function setNewAccountDescription(userId, description)
+{
+    console.log("setNewAccountDescription, ", userId, " - ", description);
+    /*let params = {
+        id_uzytkownika: userId,
+        opis: description,
+    };
+    /*axios.post('/opis_konta', {params})
+    .then((response) => {
+        if (response !== {})
+        return response;
+    else throw Error("Błąd dostępu do danych");
+    })
+    .catch((error) => {
+        throw Error("Brak poprawnej odpowiedzi serwera API!");
+    })*/
+}
+
+export function setNewPassword(userId, newPassword)
+{
+    console.log("setNewPassword, ", userId, " - ", newPassword);
+    /*let params = {
+        id_uzytkownika: userId,
+        haslo: newPassword,
+    };
+    /*axios.post('/nowe_haslo', {params})
+    .then((response) => {
+        if (response !== {})
+        return response;
+    else throw Error("Błąd dostępu do danych");
+    })
+    .catch((error) => {
+        throw Error("Brak poprawnej odpowiedzi serwera API!");
+    })*/
+}
