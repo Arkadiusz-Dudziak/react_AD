@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEdit, faCheck, faTimes, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import DataAdminObject from "../DataAdminObject.json"
+import {getObjectsAdmins} from '../FetchData'
 import Select from 'react-select'
 library.add(faEdit);
 library.add(faCheck);
@@ -37,7 +38,7 @@ class ObjectsRow extends Component
     confimrHandler(e)
     {
         this.setState({change:false, confirm:false}, 
-            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.administrator)})
+            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.administrator, true)})
     }
     handler(v)
     {
@@ -61,7 +62,7 @@ class ObjectsRow extends Component
     cancelHandler(e)
     {
         this.setState(({administrator:this.state.prev_administrator, change:false, confirm:false}), 
-            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.prev_administrator)})
+            ()=>{this.props.action(this.state.id, this.state.nazwa, this.state.prev_administrator, false)})
         console.log("cancel + ",this.state.prev_administrator);
         console.log("cancel + ",this.state.administrator);
     }
@@ -75,7 +76,7 @@ class ObjectsRow extends Component
     render()
     {
         var no_administrator = {"value": "", "label": "brak", "color": "red"}
-        const administrators = DataAdminObject.map(d => ({
+        const administrators = getObjectsAdmins().map(d => ({
             "value": d.login,
             "label": d.login
         }))

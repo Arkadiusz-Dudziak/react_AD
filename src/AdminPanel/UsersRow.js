@@ -45,23 +45,34 @@ class UsersRow extends Component
     }
     confirmHandler(e)
     {
+        var  zmiana_weryfikacji = false;
+        var zmiana_uprawnien = false; 
+        var zmiana_bana = false;
+
+        if(this.state.poprzedni_zweryfikowany!==this.state.zweryfikowany)
+            zmiana_weryfikacji = true;
+        if(this.state.poprzednie_uprawnienia!==this.state.uprawnienia)
+            zmiana_uprawnien = true;
+        if(this.state.poprzedni_ban!==this.state.ban)
+            zmiana_bana = true;
+
         this.state.uprawnienia==="użytkownik"?
         this.setState({change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
-                this.state.zweryfikowany, this.state.uprawnienia, this.state.ban)})
+                this.state.zweryfikowany, this.state.uprawnienia, this.state.ban, zmiana_weryfikacji, zmiana_uprawnien, zmiana_bana)})
             :
             this.setState({change:false, confirm:false, ban:""}, 
                 ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
-                    this.state.zweryfikowany, this.state.uprawnienia, this.state.ban)})
+                    this.state.zweryfikowany, this.state.uprawnienia, this.state.ban, zmiana_weryfikacji, zmiana_uprawnien, zmiana_bana)})
         //this.setState({value: e.target.value}, ()=>{this.props.action(this.state.value)})
-        console.log("confirm");
+        //console.log("confirm");
     }
     cancelHandler(e)
     {//funkcja działa tak, że przywraca zmieniane dane na takie przed synchronizacją z bazą danych - czyli zmieniając jednego użytkownika dwa razy, za drugim razem cofnie zmiany 
         this.setState({zweryfikowany: this.state.poprzedni_zweryfikowany, uprawnienia: this.state.poprzednie_uprawnienia, ban: this.state.poprzedni_ban, change:false, confirm:false}, 
             ()=>{this.props.action(this.state.id, this.state.email, this.state.login, 
                 this.state.poprzedni_zweryfikowany, this.state.poprzednie_uprawnienia, this.state.poprzedni_ban)})
-        console.log("cancel + ", this.state.poprzednie_uprawnienia);
+        //console.log("cancel + ", this.state.poprzednie_uprawnienia);
     }
 
     handler(v)
@@ -90,7 +101,7 @@ class UsersRow extends Component
     {
         this.setState({poprzedni_ban: this.state.ban});
         this.setState({ban: value});
-        console.log("setBanDate");
+        //console.log("setBanDate");
     }
 
     
@@ -103,7 +114,9 @@ class UsersRow extends Component
                 <td>{this.state.email}</td>
                 <td>{this.state.login}</td>
                 <td>{!this.state.change?this.state.zweryfikowany:
-                    <RadioButtons value={this.state.zweryfikowany} action={this.handler2}/>}
+                    this.state.zweryfikowany==='NIE'?
+                    <RadioButtons value={this.state.zweryfikowany} action={this.handler2}/> :
+                    this.state.zweryfikowany}
                 </td>
                 <td>{!this.state.change?this.state.uprawnienia:
                     <SelectList defaultValue={this.state.uprawnienia} action={this.handler}/>}

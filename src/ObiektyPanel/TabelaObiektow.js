@@ -1,4 +1,5 @@
-import Data from '../Data_Objects.json'
+//import Data from '../Data_Objects.json'
+import {getObjectsAdminData, setObjectAdmin} from '../FetchData'
 import React, {Component} from "react"
 import ObjectsRow from "./ObjectsRow"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -14,10 +15,10 @@ class TabelaObiektow extends Component
       super();
       this.state = 
       {
-         data: Data,
+         data: getObjectsAdminData(),
          are_any_changes: false,
          value:"",
-         changed_objects:[],
+         changed_object:[],
       };
       this.handler = this.handler.bind(this);
       this.changeHandler = this.changeHandler.bind(this);
@@ -27,24 +28,38 @@ class TabelaObiektow extends Component
     }
   
 
-    tableChangeConfirm(id, nazwa, administrator)
+    tableChangeConfirm(id, nazwa, administrator, bool)
     {
       var jsonData = {"id": "", "nazwa":"", "administrator obiektu":""};
 
-        jsonData.id = id;
-        jsonData.nazwa = nazwa;
-        jsonData.administrator = administrator;
+      jsonData.id = id;
+      jsonData.nazwa = nazwa;
+      jsonData.administrator = administrator;
 
-        //console.log(jsonData);
-        console.log("tableConfirm")
-        this.setState({changed_objects:jsonData,are_any_changes:true})
+      //console.log(jsonData);
+      //console.log("tableConfirm ", this.state.are_any_changes, " ", bool)
+      if(this.state.are_any_changes===false && bool===true)
+      {
+        this.setState({are_any_changes:true})
+        this.setState({changed_object:jsonData})
+        setObjectAdmin(id, administrator);  
+      }
+      else
+      {
+        if(this.state.are_any_changes===true && bool===true)
+        {
+          this.setState({changed_object:jsonData})
+          setObjectAdmin(id, administrator);  
+        }
+      }
     }
 
     handleSync()
     {//synchronizacja tabeli z bazą danych 
       console.log("Handle sync clicked!");
-      console.log(this.state.changed_objects);
+      console.log(this.state.changed_object);
       this.setState({are_any_changes:false});
+
     }
 
     gotoATmoduleAddObject()

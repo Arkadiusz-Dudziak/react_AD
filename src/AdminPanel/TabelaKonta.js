@@ -1,11 +1,11 @@
-import Data from '../Data_Users_V2.json'
+//import Data from '../Data_Users_V2.json'
+import {clearBan, setBanDate, setPernamentBan, getUsersData, setVerified, setAccountPermissons} from '../FetchData'
 //import Data from '../generated.json'
 import React, {Component} from "react"
 import UsersRow from './UsersRow'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
-
 library.add(faSync);
 //import update from 'react-addons-update';
 //npm i react-addons-update   ->  do clickList
@@ -18,7 +18,7 @@ class UsersTable extends Component
       super();
       this.state = 
       {
-         data: Data,
+         data: "",
          value:"",
          edytowany_uzytkownik:[],
          are_any_changes: false
@@ -30,30 +30,57 @@ class UsersTable extends Component
     }
   
 
-    tableChangeConfirm(id, email, login, zweryfikowany, uprawnienia, ban)
+    tableChangeConfirm(id, email, login, zweryfikowany, uprawnienia, ban, zmiana_weryfikacji, zmiana_uprawnien, zmiana_bana)
     {
+      console.log("login: ",login," zweryfikowany: ",zweryfikowany," uprawnienia: ",uprawnienia," ban: ",ban)
       var jsonData = {"id": "", "email":"", "login":"", "zweryfikowany":"", "uprawnienia":"", "ban":""};
 
-        jsonData.id = id;
-        jsonData.email = email;
-        jsonData.login = login;
-        jsonData.zweryfikowany = zweryfikowany;
-        jsonData.uprawnienia = uprawnienia;
-        jsonData.ban = ban;
+      jsonData.id = id;
+      jsonData.email = email;
+      jsonData.login = login;
+      jsonData.zweryfikowany = zweryfikowany;
+      jsonData.uprawnienia = uprawnienia;
+      jsonData.ban = ban;
 
-        console.log("tableConfirm: ",jsonData);
-        //console.log("tableConfirm, ", ban)
-        this.setState({edytowany_uzytkownik:jsonData, are_any_changes:true});
-        //console.log("send data to API");
+      if(zmiana_weryfikacji)
+      {
+        setVerified(id);
+      }
+      if(zmiana_bana)
+      {
+        if(ban!=="")
+        {
+          if(ban==="pernamentny")
+            setPernamentBan(id);
+          else
+            setBanDate(id, ban);
+        }
+        else
+          clearBan(id);
+      }
+      if(zmiana_uprawnien)
+        setAccountPermissons(id, uprawnienia);
+      //setVerified(id);
+      console.log("tableConfirm: ",jsonData);
+      //console.log("tableConfirm, ", ban)
+      this.setState({edytowany_uzytkownik:jsonData, are_any_changes:true});
+      //console.log("send data to API");
     }
     
+    componentWillMount()
+    {
+      this.setState({data: getUsersData()})
+      console.log("componentWillMount")
+    }
 
 
     handleSync()
     {//synchronizacja tabeli z bazą danych 
       console.log("Handle sync clicked!");
-      console.log(this.state.edytowany_uzytkownik);
-      this.setState({are_any_changes:false});
+      //this.setState({are_any_changes:false});
+      //this.setState({data: getUsersData()})
+      this.forceUpdate();
+      //window.location.reload(false)
     }
 
     changeHandler()
@@ -67,7 +94,7 @@ class UsersTable extends Component
     }
 
     render() {
-      var newdata = this.state.data;
+      //var newdata = this.state.data;
       const self = this; //!!!!
       
       return (
@@ -93,9 +120,9 @@ class UsersTable extends Component
             </tr>
           </thead>
           <tbody id="tbody">
-            {newdata.map(function(userDetails, index) {
+            {self.state.data.map(function(userDetails, index) {
               return (
-                <UsersRow index={index} userDetails={userDetails} action={self.tableChangeConfirm}/>
+                <UsersRow key={userDetails.id} index={index} userDetails={userDetails} action={self.tableChangeConfirm}/>
               );
             })}
           </tbody>
