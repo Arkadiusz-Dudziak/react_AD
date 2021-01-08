@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from "react-bootstrap";
 import { getAccountDescription, setNewAccountDescription, setNewPassword } from "../FetchData";
 
-
 class App_Options extends Component
 {
     constructor()
@@ -17,8 +16,8 @@ class App_Options extends Component
             passwords_are_equal: false,
             password_correct: false,
             password: "",
-            prev_textAreaValue: "przykladowy tekst.",
-            textAreaValue: "przykladowy tekst."
+            prev_textAreaValue: "przykładowy opis.",
+            textAreaValue: "przykładowy opis."
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -31,9 +30,10 @@ class App_Options extends Component
     }
 
     componentDidMount()
-    {//TODO 
+    {//TODO - wczytać opis konta
         //var obj = JSON.parse(getAccountDescription(this.state.userId));
-        //this.setState(obj[0].opis_konta);
+        //console.log(getAccountDescription(this.state.userId))
+        //this.setState(obj.opis_konta);
     }
 
     handleChange(event) 
@@ -59,10 +59,10 @@ class App_Options extends Component
             <div className="container">
                 <div className="row">
                     <div className="col-md-9 pt-4">
-                        <h3>Administrator Obiektu Sportowego</h3>
+                        <h3>Użytkownik</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
-                        {this.state.passwords_are_equal && this.state.password_correct? <Button onClick={this.setNewPassword}>POTWIERDŹ</Button>:null}
+                        {this.state.passwords_are_equal && this.state.password_correct? <Button onClick={this.setNewPassword}>ZAPISZ</Button>:null}
                         <h3>Opis konta</h3>
                         <textarea className="form-control"
                             value={this.state.textAreaValue}
@@ -71,7 +71,7 @@ class App_Options extends Component
                             rows={4}
                         />
                         {this.state.prev_textAreaValue !== this.state.textAreaValue?
-                            <Button onClick={this.sendChangeToAPI}>ZATWIERDŹ</Button>
+                            <Button onClick={this.sendChangeToAPI}>ZAPISZ</Button>
                             :
                             null
                         }
@@ -82,15 +82,5 @@ class App_Options extends Component
     }
 }
 export default App_Options;
-/*
-    <AvatarChange/>
-    <DescriptionChange/>
-    <SaveButton/>
-*/
-/*  Użytkownik, Administrator obiektu, Administrator systemu
-1. Aktor klika w znajdującą się u góry strony ikonę użytkownika, a następnie w „Edytuj konto”
-2. Aktor może zmieniać dane swojego konta, w tym hasło, awatar i opis konta
-3. Aktor zapisuje zmiany klikając „Zapisz”
-4. Zmiany wprowadzane są bezzwłocznie
-*/
+
 // TODO przy zmianie hasła 1 i powrotu do poprzedniego - hasła nie są takie same

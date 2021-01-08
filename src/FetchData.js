@@ -421,9 +421,11 @@ export function getAccountDescription(userId)
     })*/
     return [
         {
-            "opis_konta": "Przykładowy opis konta."
+            id: 1,
+            opis_konta: "Przykładowy opis konta."
         }
     ]
+    
 
 }
 

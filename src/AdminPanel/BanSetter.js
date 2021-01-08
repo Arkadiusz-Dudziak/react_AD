@@ -60,7 +60,7 @@ class Calendar extends Component
         today = yyyy + '-' + mm + '-' + dd;
         return(
                 <>
-                    {this.state.date==="pernamentny"?
+                    {this.state.date==="permanentny"?
                     <div>
                         <FontAwesomeIcon 
                             icon="redo"
@@ -68,7 +68,7 @@ class Calendar extends Component
                             title="anuluj bana"
                             onClick={this.cancelBan}
                         />
-                        pernamentny
+                        permanentny
                         <Form.Control 
                             type="date"
                             value={this.state.date}
@@ -84,7 +84,7 @@ class Calendar extends Component
                     :
                     this.state.pernament_ban?
                     <div>
-                        pernamentny 
+                        permanentny 
                     </div>
                     :
                     <div>
@@ -106,7 +106,7 @@ class Calendar extends Component
                         <FontAwesomeIcon 
                             icon="ban"
                             cursor="pointer"
-                            title="pernamentny ban"
+                            title="permanentny ban"
                             color="red"
                             onClick={this.pernamentBan}
                         />
