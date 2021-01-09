@@ -447,9 +447,10 @@ export function setNewAccountDescription(userId, description)
     })*/
 }
 
-export function setNewPassword(userId, newPassword)
+export function setNewPassword(userId, newPassword, current_password)
 {
     console.log("setNewPassword, ", userId, " - ", newPassword);
+    console.log("currentPass: ", current_password)
     /*let params = {
         id_uzytkownika: userId,
         haslo: newPassword,

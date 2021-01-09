@@ -3,8 +3,14 @@ import "./indexOptions.css"
 import NewPasswordandRepeat from "../SharedModules/NewPassword"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from "react-bootstrap";
+import {FormGroup} from 'react-bootstrap'
 import { getAccountDescription, setNewAccountDescription, setNewPassword } from "../FetchData";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
+library.add(faEye);
+library.add(faEyeSlash);
 class App_Options extends Component
 {
     constructor()
@@ -15,18 +21,37 @@ class App_Options extends Component
             userId: 12,
             passwords_are_equal: false,
             password_correct: false,
-            password: "",
+            new_password: "",
+            current_password: "",
             prev_textAreaValue: "przykładowy opis.",
-            textAreaValue: "przykładowy opis."
+            textAreaValue: "przykładowy opis.",
+            password_visible: false
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.setNewPassword = this.setNewPassword.bind(this);
+        this.handlePasswordChange = this.handlePasswordChange.bind(this);
+        this.togglePassVisible = this.togglePassVisible.bind(this);
+        this.setNewPassword_ = this.setNewPassword_.bind(this);
     }
     
     set_passwords_equality(bool, bool2, pass)
     {
-        this.setState({passwords_are_equal: bool, password_correct: bool2, password: pass})
+        this.setState({passwords_are_equal: bool, password_correct: bool2, new_password: pass})
+    }
+
+    handlePasswordChange(event)
+    {
+        const {value, name} = event.target;
+        this.setState({current_password: value})
+    }
+
+    togglePassVisible(event)
+    {
+        this.setState(prevState =>
+            {
+                return{password_visible: !prevState.password_visible}
+            }
+        )
     }
 
     componentDidMount()
@@ -47,9 +72,10 @@ class App_Options extends Component
         setNewAccountDescription(this.state.userId, this.state.textAreaValue)
     }
 
-    setNewPassword()
+    setNewPassword_()
     {
-        setNewPassword(this.state.userId, this.state.password)
+        console.log(this.state.new_password," ", this.state.current_password)
+        setNewPassword(this.state.userId, this.state.new_password, this.state.current_password)
     }
 
     render()
@@ -61,8 +87,30 @@ class App_Options extends Component
                     <div className="col-md-9 pt-4">
                         <h3>Użytkownik</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
+                        <FormGroup>
+                            <label>
+                                <h4>Aktualne hasło</h4> 
+                                <input type={this.state.password_visible? "text" : "password"}
+                                    className="pass"
+                                    name="password"
+                                    value={this.state.current_password}
+                                    onChange={this.handlePasswordChange}
+                                    onFocus={this.toggleFocus}
+                                    onBlur={this.toggleFocus}
+                                    maxLength="128"
+                                    required
+                                />
+                            </label>
+                            <FontAwesomeIcon 
+                            icon={this.state.password_visible? "eye" : "eye-slash"}
+                            onClick={this.togglePassVisible}
+                            className="fa-lg"
+                            cursor="pointer"
+                            />
+                        </FormGroup>
+                        
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
-                        {this.state.passwords_are_equal && this.state.password_correct? <Button onClick={this.setNewPassword}>ZAPISZ</Button>:null}
+                        {this.state.passwords_are_equal && this.state.password_correct? <Button onClick={this.setNewPassword_}>ZAPISZ</Button>:null}
                         <h3>Opis konta</h3>
                         <textarea className="form-control"
                             value={this.state.textAreaValue}
@@ -71,7 +119,7 @@ class App_Options extends Component
                             rows={4}
                         />
                         {this.state.prev_textAreaValue !== this.state.textAreaValue?
-                            <Button onClick={this.sendChangeToAPI}>ZAPISZ</Button>
+                            <Button onClick={this.setNewDescription}>ZAPISZ</Button>
                             :
                             null
                         }
