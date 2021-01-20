@@ -17,8 +17,8 @@ class FormRegister extends Component
         super()
         this.state = 
         {
-            email: "emailo@emai.com",
-            login: "login1234",
+            email: "",
+            login: "",
             error_message: "",
             regulations_ok: false,
             showRegulations: false,
@@ -173,7 +173,7 @@ class FormRegister extends Component
                     </label>
                     
                     <br/>
-                        Jednak mam konto, chce się zalogować
+                        Przejdź do logowania
                     <br/>
                         <Button onClick={()=>this.props.action()}>LOGOWANIE</Button>
                     <br/>

@@ -6,6 +6,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 //import HelpPopup from "./HelpPopup";
 import ForgottenPopup from "./ForgettenPopup";
+import Cookies from 'universal-cookie'
+
 library.add(faEye);
 library.add(faEyeSlash);
 class FormLogin extends Component
@@ -40,6 +42,16 @@ class FormLogin extends Component
     logIn()
     {
         console.log("proces logowania");
+        //uzytkownik
+        var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InNwb3J0b3dpZWMzNSIsInVwcmF3bmllbmlhIjoidXp5dGtvd25payIsImVtYWlsIjoiYWRyZXMxQGFkcmVzLmNvbSJ9.vNI3-PNIxt5XxPP6tarsvDU-RISNYhlNDAyzoO7noC0";
+        //administrator
+        var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluMzQiLCJ1cHJhd25pZW5pYSI6ImFkbWluaXN0cmF0b3IifQ.qahY4iORvKoM24QQwwdpbQHF6scboV6SdKBQVDiU7gY"
+        const cookies = new Cookies();
+        cookies.set('user_data', token1, { path: '/' });
+
+        window.location.reload(false);
+        //console.log(cookies.get('user_data')); // Pacman
+        //console.log(decode1);
     }
     render()
     {
@@ -51,7 +63,7 @@ class FormLogin extends Component
                     <label>
                         <h2>Email lub login</h2> 
                         <input type="text"
-                            required
+                            //required TODO odkomentować
                         />
                     </label>
                     </FormGroup>
@@ -60,7 +72,7 @@ class FormLogin extends Component
                     <label>
                         <h2>Hasło</h2> 
                         <input type={this.state.password_visible? "text" : "password"}
-                            required
+                            // required TODO odkomentować
                         />
                     </label>
                     <FontAwesomeIcon 
@@ -73,7 +85,7 @@ class FormLogin extends Component
                     <label className="forgot_password" onClick={this.toggleForgotten}>Nie pamiętam hasła</label><br/>
                     
                     <label>
-                        <Button type="submit">ZALOGUJ</Button>
+                        <Button onClick={this.logIn}>ZALOGUJ</Button>
                     </label>
                         <br/>
                         Nie masz konta? Możesz się zarejestrować

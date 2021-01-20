@@ -11,6 +11,7 @@ html, body, .app
   padding: 0;
   position: relative;
   width: 100%;
+  color: white;
   height: 100vh;
 }
 
@@ -30,6 +31,7 @@ table
 {
   text-align : center;
   border-collapse : collapse;
+  color: black;
 }
 table tr th, table tr td 
 {

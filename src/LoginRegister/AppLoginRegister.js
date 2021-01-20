@@ -4,6 +4,7 @@ import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './index_LR.css';
 import HelpPopup from "./HelpPopup";
+import Cookies from 'universal-cookie'
 /* https://codepen.io/bastianalbers/pen/PWBYvz */
 class App_1 extends React.Component 
 {
@@ -14,10 +15,13 @@ class App_1 extends React.Component
         {
             showPopup: false,
             register: false,
-            showHelp: false
+            showHelp: false,
+            userName: "",
+            permissions: ""
         };
         this.togglePopup = this.togglePopup.bind(this)
         this.toggleHelp = this.toggleHelp.bind(this)
+        this.logOut = this.logOut.bind(this)
     }
 
     togglePopup(props) 
@@ -25,7 +29,7 @@ class App_1 extends React.Component
         this.setState(
         {
             showPopup: !this.state.showPopup,
-            register: props
+            register: props //false -> login true -> rejestracja
         });
     }
     toggleHelp(props) 
@@ -35,24 +39,52 @@ class App_1 extends React.Component
             showHelp: !this.state.showHelp
         });
     }
+
+    componentDidMount()
+    {
+        var jwt = require("jsonwebtoken");
+        const cookies = new Cookies();
+        var token = cookies.get('user_data');
+        if(token!=="")
+        {
+            var decode = jwt.decode(token);
+            console.log(decode);
+            this.setState({userName:decode.login})
+        }   
+    }
+
+    setUser()
+    {
+        
+    }
+
+
+    logOut()
+    {
+        const cookies = new Cookies();
+        cookies.set('user_data', "", { path: '/' });
+        this.setState({userName: ""})
+        window.location.reload(false);
+    }
+
     render() 
     {
         let register = false;
         return (
-        <div className='app'>
-            <Button onClick={()=>this.togglePopup(false)}>ZALOGUJ SIĘ</Button>
-            <Button onClick={()=>this.togglePopup(true)}>ZAREJESTRUJ SIĘ</Button>
-            <Button onClick={()=>this.toggleHelp()}>POMOC</Button>
-            <p>Lista obiektów: </p>
-            <ul>
-                <li>Boisko bez murawy</li>
-                <li>Boisko bez bramek</li>
-                <li>Boisko do badmintona</li>
-                <li>Kort tenisowy</li>
-                <li>Kort do squasha</li>
-            </ul>
-            <p>Wyszukaj obiekt</p>
-            <input type="text" placeholder="wpisz nazwę obiektu"/>
+        <>
+            {this.state.userName!==""?
+                <>
+                    {this.state.userName}
+                    <Button onClick={()=>this.logOut()}>WYLOGUJ</Button>
+                </>
+                :
+                <>
+                <Button onClick={()=>this.togglePopup(false)}>ZALOGUJ SIĘ</Button>
+                <Button onClick={()=>this.togglePopup(true)}>ZAREJESTRUJ SIĘ</Button>
+                <Button onClick={()=>this.toggleHelp()}>POMOC</Button>
+                </>
+            }
+            
             {this.state.showPopup ? 
             <Popup
                 register = {this.state.register}
@@ -67,7 +99,7 @@ class App_1 extends React.Component
             />
             : null
             }
-        </div>
+        </>
         );
     }
 };

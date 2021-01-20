@@ -1,17 +1,29 @@
 import axios from 'axios'
+import Cookies from 'universal-cookie'
+
+var jwt = require("jsonwebtoken");
+const cookies = new Cookies();
+var token = cookies.get('user_data');
 
 //--------------------------ZARZĄDZANIE ADMINISTRACJĄ OBIEKTÓW-------------------
 export function getObjectsAdminData()
 {
-    /*axios.get('/obiekty_i_admin')
-    .then((response) => {
-        if(response !== {})
-            return response;
-        else throw Error("Błąd dostępu do danych");
-    })
-    .catch((error) => {
-        throw Error("Brak poprawnej odpowiedzi serwera API")
-    })*/
+    console.log("getObjectsAdminData");
+    const config = {
+        headers: { Authorization: `Bearer ${token}` }
+    };
+    console.log(config);
+
+    const bodyParameters = {
+    key: "value"
+    };
+
+    /*axios.post( 
+      'http://localhost:8000/api/v1/get_token_payloads',
+      bodyParameters,
+      config
+    ).then(console.log).catch(console.log);
+    */  
 
     return [
         {
@@ -67,7 +79,7 @@ export function getObjectsAdmins()
     return [
         {
             id: 8,  
-            login: "cyberpunk2077"
+            login: "skaut"
         },
         {
             id: 10,
@@ -88,6 +100,18 @@ export function getObjectsAdmins()
         {
             id: 21,
             login: "admin341"
+        },
+        {
+            id: 24,
+            login: "adminoooo"
+        },
+        {
+            id: 25,
+            login: "bosyy"
+        },
+        {
+            id: 31,
+            login: "kowalski"
         }
     ]
 }
@@ -99,6 +123,10 @@ export function setObjectAdmin(objectId, adminLogin)
     let params = {
         id_obiektu: objectId,
         login_administratora: adminLogin,
+    };
+    const header = 
+    {
+      headers: {}  
     };
     /*axios.post('/admin_do_obiektu', {params})
     .then((response) => {
@@ -170,8 +198,8 @@ export function getUsersData()
         },
         {        
             id: 6,
-            email: "max_payne@o2.pl",
-            login: "boom_headshot",
+            email: "user_02@o2.pl",
+            login: "letMeIn",
             zweryfikowany: "TAK",
             uprawnienia: "użytkownik",
             ban: "2020-12-29"
@@ -187,7 +215,7 @@ export function getUsersData()
         {
             id: 8,        
             email: "adam_jensen@gmail.pl",
-            login: "cyberpunk2077",
+            login: "json45",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
             ban: ""
@@ -210,16 +238,16 @@ export function getUsersData()
         },
         {
             id: 11,
-            email: "geralt_z_rivii@gmail.pl",
-            login: "dobry_Mutant",
+            email: "userooo@gmail.pl",
+            login: "user0000",
             zweryfikowany: "NIE",
             uprawnienia: "użytkownik",
             ban: ""
         },
         {
             id: 12,        
-            email: "robert_lewandowski@gmail.pl",
-            login: "dwie_lewe_nogi",
+            email: "robert@gmail.pl",
+            login: "roberto_maximo",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
             ban: "2021-04-13"
@@ -227,8 +255,8 @@ export function getUsersData()
         ,
         {
             id: 13,
-            email: "corvo_attano@interia.pl",
-            login: "SolidMaskedHero",
+            email: "inter_mediolan@interia.pl",
+            login: "club_001",
             zweryfikowany: "TAK",
             uprawnienia: "moderator treści",
             ban: ""
@@ -237,7 +265,7 @@ export function getUsersData()
         {        
             id: 14,
             email: "dwayne_johnson@o2.pl",
-            login: "Ten_Kamien",
+            login: "johs0N",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
             ban: ""
@@ -245,7 +273,7 @@ export function getUsersData()
         {
             id: 15,
             email: "gear_marcus@gmail.pl",
-            login: "muscular_fenix",
+            login: "feniX",
             zweryfikowany: "NIE",
             uprawnienia: "użytkownik",
             ban: ""
@@ -285,7 +313,7 @@ export function getUsersData()
         {
             id: 20,        
             email: "ross@gmail.pl",
-            login: "i_love_rachel",
+            login: "geller",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
             ban: "2022-02-01"
@@ -293,7 +321,7 @@ export function getUsersData()
         {        
             id: 21,
             email: "usain_bolt@o2.pl",
-            login: "fastest_man",
+            login: "fast_and_fourius",
             zweryfikowany: "NIE",
             uprawnienia: "użytkownik",
             ban: "2022-04-15"
@@ -316,8 +344,8 @@ export function getUsersData()
         },
         {
             id: 24,        
-            email: "watch_dogs@gmail.pl",
-            login: "uwaga_psy",
+            email: "watcher@gmail.pl",
+            login: "watcher",
             zweryfikowany: "TAK",
             uprawnienia: "użytkownik",
             ban: "pernamentny"

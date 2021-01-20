@@ -19,6 +19,7 @@ class NewPassword extends Component
             number: null,
             visible: true,
             specialChar: null,
+            letter: null,
             password_correct: false,
             password_visible: false,
             passRepeat_visible: false
@@ -50,12 +51,14 @@ class NewPassword extends Component
     handlePasswordChange(event)
     {
         const isNumberRegx = /\d/;
+        const isLetterRegx = /[a-zA-Z]/;
         const specialCharacterRegx = /[  !@#$%^&*()_+\-=\[\]{};:"\\|,.<>\/?]/;
         const {value, name} = event.target;
         this.setState({[name]: value})
         this.setState({
-            minChar: value.length >= 7 ? true : false,
+            minChar: value.length >= 8 ? true : false,
             number: isNumberRegx.test(value)? true : false,
+            letter: isLetterRegx.test(value)? true : false,
             specialChar: specialCharacterRegx.test(value)? true : false,
         }, () =>
         {
@@ -120,6 +123,7 @@ class NewPassword extends Component
                          Hasło musi posiadać: <br/>
                         <span style={this.state.minChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 8 znaków</b></span><br/>
                         <span style={this.state.number? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 cyfrę</b></span><br/>
+                        <span style={this.state.letter? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 literę </b></span><br/>
                         <span style={this.state.specialChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 znak specjalny</b></span><br/>
                     </label>
 

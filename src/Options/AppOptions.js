@@ -8,6 +8,9 @@ import { getAccountDescription, setNewAccountDescription, setNewPassword } from 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import AppLoginRegister from "../LoginRegister/AppLoginRegister"
+import '../LoginRegister/index_LR.css'
+import Cookies from 'universal-cookie'
 
 library.add(faEye);
 library.add(faEyeSlash);
@@ -25,13 +28,15 @@ class App_Options extends Component
             current_password: "",
             prev_textAreaValue: "przykładowy opis.",
             textAreaValue: "przykładowy opis.",
-            password_visible: false
+            password_visible: false,
+            permissions: ""
         };
         this.set_passwords_equality = this.set_passwords_equality.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handlePasswordChange = this.handlePasswordChange.bind(this);
         this.togglePassVisible = this.togglePassVisible.bind(this);
         this.setNewPassword_ = this.setNewPassword_.bind(this);
+        this.setNewDescription = this.setNewDescription.bind(this);
     }
     
     set_passwords_equality(bool, bool2, pass)
@@ -59,6 +64,25 @@ class App_Options extends Component
         //var obj = JSON.parse(getAccountDescription(this.state.userId));
         //console.log(getAccountDescription(this.state.userId))
         //this.setState(obj.opis_konta);
+        // zabezpieczenie front / nie próbuje wyświetlać widoków osobom nieuprawnionym
+        // przy zapytaniach, po stronie serwera należy sprawdzić uprawnienia
+        var jwt = require("jsonwebtoken");
+        const cookies = new Cookies();
+        var token = cookies.get('user_data');
+        if(token!=="")
+        {
+            var decode = jwt.decode(token);
+            console.log(decode);
+            if(decode.uprawnienia!=="")
+            {
+                this.setState({permissions_ok: true, permissions: decode.uprawnienia})
+            }
+            else
+            {
+                this.setState({permissions_ok: false})
+                alert("Brak uprawnień!")
+            }
+        }   
     }
 
     handleChange(event) 
@@ -81,11 +105,16 @@ class App_Options extends Component
     render()
     {
         document.body.style = 'background: #1a2057;';
+        document.body.style = 'color: white';
         return(
+            <>
+            {this.state.permissions_ok===true?
+            <>
+            <AppLoginRegister/>
             <div className="container">
                 <div className="row">
                     <div className="col-md-9 pt-4">
-                        <h3>Użytkownik</h3>
+                        <h3>Uprawnienia: {this.state.permissions}</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <FormGroup>
                             <label>
@@ -126,6 +155,11 @@ class App_Options extends Component
                     </div>
                 </div>
             </div>
+            </>
+            :
+            <AppLoginRegister/>
+            }
+            </>
         )
     }
 }
