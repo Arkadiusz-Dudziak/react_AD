@@ -4,19 +4,19 @@ import "./index.css"
 
 //import AppUserProfile from './UserProfile/AppUserProfile';
 
-//import AppObiektyPanel from './ObiektyPanel/AppObiektyPanel'
+import AppObiektyPanel from './ObiektyPanel/AppObiektyPanel'
 
 //import AppLoginRegister from './LoginRegister/AppLoginRegister'; //logowanie, rejestracja
 
-//import AppAdminPanel from './AdminPanel/AppKontaPanel'; //panel z kontami uzytkownikow
+//import AppKontaPanel from './AdminPanel/AppKontaPanel'; //panel z kontami uzytkownikow
 
-import AppOptions from './Options/AppOptions';     
+//import AppOptions from './Options/AppOptions';     
 
 
 import * as serviceWorker from './serviceWorker';
 
 
-ReactDOM.render(<AppOptions/>, document.getElementById('root'));
+ReactDOM.render(<AppObiektyPanel/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

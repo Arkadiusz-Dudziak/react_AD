@@ -72,15 +72,9 @@ class App_Options extends Component
         if(token!=="")
         {
             var decode = jwt.decode(token);
-            console.log(decode);
             if(decode.uprawnienia!=="")
             {
-                this.setState({permissions_ok: true, permissions: decode.uprawnienia})
-            }
-            else
-            {
-                this.setState({permissions_ok: false})
-                alert("Brak uprawnień!")
+                this.setState({permissions: decode.uprawnienia})
             }
         }   
     }
@@ -107,8 +101,6 @@ class App_Options extends Component
         document.body.style = 'background: #1a2057;';
         document.body.style = 'color: white';
         return(
-            <>
-            {this.state.permissions_ok===true?
             <>
             <AppLoginRegister/>
             <div className="container">
@@ -155,10 +147,6 @@ class App_Options extends Component
                     </div>
                 </div>
             </div>
-            </>
-            :
-            <AppLoginRegister/>
-            }
             </>
         )
     }
