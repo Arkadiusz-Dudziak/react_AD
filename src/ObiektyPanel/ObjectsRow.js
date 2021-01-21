@@ -2,7 +2,6 @@ import React, { Component } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEdit, faCheck, faTimes, faUserEdit } from "@fortawesome/free-solid-svg-icons";
-import DataAdminObject from "../DataAdminObject.json"
 import {getObjectsAdmins} from '../FetchData'
 import Select from 'react-select'
 library.add(faEdit);

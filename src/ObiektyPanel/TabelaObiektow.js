@@ -1,4 +1,3 @@
-//import Data from '../Data_Objects.json'
 import {getObjectsAdminData, setObjectAdmin} from '../FetchData'
 import React, {Component} from "react"
 import ObjectsRow from "./ObjectsRow"
