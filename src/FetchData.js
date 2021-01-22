@@ -103,7 +103,7 @@ export function getObjectsAdmins()
         },
         {
             id: 24,
-            login: "adminoooo"
+            login: "zarzadca_15"
         },
         {
             id: 25,

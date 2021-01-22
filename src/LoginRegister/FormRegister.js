@@ -104,14 +104,15 @@ class FormRegister extends Component
     render()
     {
         return(
-            <div style={{display:"flex"}}>
-                <div style={{marginTop: "auto", marginBottom: "auto", marginRight:"auto", marginLeft:"auto"}}>
+            <div className="verticalCenter" style={{display:"flex"}}>
+                <div style={{marginRight:"auto", marginLeft:"auto"}}>
                 <h2>REJESTRACJA</h2>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                     <h4>Email</h4>
                     <input type="email" 
                         name="email"
+                        className="form-control"
                         value={this.state.email} 
                         onChange={this.handleChange}
                         required
@@ -121,6 +122,7 @@ class FormRegister extends Component
                     <FormGroup>
                     <h4>Login</h4> 
                     <input type="text" 
+                        className="form-control"
                         name="login"
                         value={this.state.login} 
                         onChange={this.handleChange}
@@ -128,7 +130,11 @@ class FormRegister extends Component
                     />
                     </FormGroup>
                     
-                    <NewPasswordandRepeat action={this.set_passwords_equality}/>
+                    <FormGroup>
+                        <NewPasswordandRepeat action={this.set_passwords_equality}/>
+                    </FormGroup>
+                    
+                    
                     
                     <label>
                         <input type="checkbox"
@@ -158,7 +164,7 @@ class FormRegister extends Component
                         :null
                     }
                     <br/>
-                    <FormGroup>
+                    <FormGroup className="ReCaptcha">
                         <Recaptcha
                             sitekey="6LfCKx4aAAAAAI3E7-kchlw_iZB_RsDxy9nb_ujM"
                             render="explicit"
@@ -175,12 +181,15 @@ class FormRegister extends Component
                     <br/>
                         Przejdź do logowania
                     <br/>
-                        <Button onClick={()=>this.props.action()}>LOGOWANIE</Button>
+                        <Button className="btn-success" onClick={()=>this.props.action()}>LOGOWANIE</Button>
                     <br/>
+
+                    
                     
                 </Form> 
-                    
+                
                 </div>
+                
             </div>
             
             

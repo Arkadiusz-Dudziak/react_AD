@@ -35,7 +35,7 @@ class Popup extends React.Component 
       return (
         <div className='popup'>
           <div className='popup_inner'>
-              <div style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
+              <div style={{float: "right", fontSize: "30px", marginRight: "15px"}}>
                   <FontAwesomeIcon 
                     icon="times" 
                     onClick={this.props.closePopup}
@@ -44,6 +44,7 @@ class Popup extends React.Component 
               </div>
                 
               {this.state.register ? <FormRegister action={this.handleRegisterChange}/> : <FormLogin action={this.handleRegisterChange}/>}
+              
           </div>
         </div>
       );

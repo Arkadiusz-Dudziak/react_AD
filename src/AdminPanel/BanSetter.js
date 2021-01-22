@@ -36,7 +36,7 @@ class Calendar extends Component
 
     cancelBan()
     {
-        {this.props.action("0")};
+        {this.props.action("")};
         this.setState({cancel_ban: true});
     }
 
@@ -80,7 +80,7 @@ class Calendar extends Component
                         />
                     </div>:
                     this.state.cancel_ban?
-                    0 
+                    ''
                     :
                     this.state.pernament_ban?
                     <div>

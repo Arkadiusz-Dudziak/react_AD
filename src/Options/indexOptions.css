@@ -1,10 +1,6 @@
 
-body
-{
-  background-color: #1a2057;
-}/*body nie działa*/
 .container
 {
-  background-color: #1a2057;
-  color: white;
+  background-color: white;
+  color: black;
 }

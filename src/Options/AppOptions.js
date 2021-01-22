@@ -66,17 +66,20 @@ class App_Options extends Component
         //this.setState(obj.opis_konta);
         // zabezpieczenie front / nie próbuje wyświetlać widoków osobom nieuprawnionym
         // przy zapytaniach, po stronie serwera należy sprawdzić uprawnienia
-        var jwt = require("jsonwebtoken");
-        const cookies = new Cookies();
-        var token = cookies.get('user_data');
-        if(token!=="")
+        if (document.cookie.indexOf('user_data') !== -1 ) 
         {
-            var decode = jwt.decode(token);
-            if(decode.uprawnienia!=="")
+            var jwt = require("jsonwebtoken");
+            const cookies = new Cookies();
+            var token = cookies.get('user_data');
+            if(token!=="")
             {
-                this.setState({permissions: decode.uprawnienia})
-            }
-        }   
+                var decode = jwt.decode(token);
+                if(decode.uprawnienia!=="")
+                {
+                    this.setState({permissions: decode.uprawnienia})
+                }
+            }   
+        }
     }
 
     handleChange(event) 
@@ -98,10 +101,8 @@ class App_Options extends Component
 
     render()
     {
-        document.body.style = 'background: #1a2057;';
-        document.body.style = 'color: white';
         return(
-            <>
+            <d>
             <AppLoginRegister/>
             <div className="container">
                 <div className="row">
@@ -112,22 +113,26 @@ class App_Options extends Component
                             <label>
                                 <h4>Aktualne hasło</h4> 
                                 <input type={this.state.password_visible? "text" : "password"}
-                                    className="pass"
+                                    className="pass form-control"
                                     name="password"
                                     value={this.state.current_password}
                                     onChange={this.handlePasswordChange}
                                     onFocus={this.toggleFocus}
                                     onBlur={this.toggleFocus}
                                     maxLength="128"
+                    
                                     required
                                 />
                             </label>
-                            <FontAwesomeIcon 
-                            icon={this.state.password_visible? "eye" : "eye-slash"}
-                            onClick={this.togglePassVisible}
-                            className="fa-lg"
-                            cursor="pointer"
-                            />
+                            <span className="eyeIcon">
+                                <FontAwesomeIcon 
+                                icon={this.state.password_visible? "eye" : "eye-slash"}
+                                onClick={this.togglePassVisible}
+                                className="fa-lg"
+                                cursor="pointer"
+                                />
+                            </span>
+                            
                         </FormGroup>
                         
                         <NewPasswordandRepeat action={this.set_passwords_equality}/>
@@ -147,7 +152,7 @@ class App_Options extends Component
                     </div>
                 </div>
             </div>
-            </>
+            </d>
         )
     }
 }

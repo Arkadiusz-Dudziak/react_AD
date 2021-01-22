@@ -44,13 +44,16 @@ class App_1 extends React.Component
     {
         var jwt = require("jsonwebtoken");
         const cookies = new Cookies();
-        var token = cookies.get('user_data');
-        if(token!=="")
-        {
-            var decode = jwt.decode(token);
-            console.log(decode);
-            this.setState({userName:decode.login})
-        }   
+        if (document.cookie.indexOf('user_data') !== -1 ) {
+            var token = cookies.get('user_data');
+            if(token!=="")
+            {
+                var decode = jwt.decode(token);
+                console.log(decode);
+                this.setState({userName:decode.login})
+            }   
+        }
+        
     }
 
     setUser()
@@ -73,16 +76,17 @@ class App_1 extends React.Component
         return (
         <>
             {this.state.userName!==""?
-                <>
+                <div className="LoginRegisterUpMenu">
                     {this.state.userName}
-                    <Button onClick={()=>this.logOut()}>WYLOGUJ</Button>
-                </>
+                    <Button className="UpMenuButton btn-secondary" onClick={()=>this.logOut()}>WYLOGUJ</Button>
+                    <Button className="UpMenuButton btn-info" onClick={()=>this.toggleHelp()}>POMOC</Button>
+                </div>
                 :
-                <>
-                <Button onClick={()=>this.togglePopup(false)}>ZALOGUJ SIĘ</Button>
-                <Button onClick={()=>this.togglePopup(true)}>ZAREJESTRUJ SIĘ</Button>
-                <Button onClick={()=>this.toggleHelp()}>POMOC</Button>
-                </>
+                <div className="LoginRegisterUpMenu">
+                    <Button className="UpMenuButton btn-success" onClick={()=>this.togglePopup(false)}>ZALOGUJ SIĘ</Button>
+                    <Button className="UpMenuButton btn-primary" onClick={()=>this.togglePopup(true)}>ZAREJESTRUJ SIĘ</Button>
+                    <Button className="UpMenuButton btn-info" onClick={()=>this.toggleHelp()}>POMOC</Button>
+                </div>
             }
             
             {this.state.showPopup ? 
