@@ -12,17 +12,17 @@ class LinkConfirmPopup extends Component
     render()
     {
         return(
-            <div className='RegisterEndPopup'>
-                <div className='RegisterEndPopup_inner' style={{display:"flex"}}>
+            <div className='popup'>
+                <div className='popup_inner' style={{display:"flex"}}>
                     <div style={{marginTop: "auto", marginBottom: "auto", marginRight:"auto", marginLeft:"auto"}}>
-                        <h1>
+                        <h1 style={{marginBottom: "10px"}}>
                             Dziękujemy za rejestrację!
                         </h1>
-                        <p>
+                        <p style={{fontSize: "20px"}}>
                             Na email podany w formularzu został wysłany email z linkiem potwierdzającym. <br/>
                             Proszę kliknąć w link potwierdzający, by móc się zalogować. 
                         </p>
-                        <Button onClick={this.props.closePopup}>OK</Button>
+                        <Button className="ButtonLoginAndRegister" onClick={this.props.closePopup}>OK</Button>
                     </div>
                     
                     

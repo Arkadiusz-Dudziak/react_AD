@@ -56,58 +56,81 @@ class FormLogin extends Component
     render()
     {
         return(
-            <div className="verticalCenter">
-                {this.state.forgotten_password ? 
-                        <ForgottenPopup
-                            closePopup={this.toggleForgotten}
-                        />
-                        : 
-                        <div>
-                    <h1>LOGOWANIE</h1>
-                    <Form onSubmit={this.logIn}>
-                        <FormGroup>
-                        <label>
-                            <h4>Email lub login</h4> 
-                            <input type="text"
-                            className="form-control"
-                            required
-                            />
-                        </label>
-                        </FormGroup>
+            <div className="verticalCenter" style={{display:"flex"}}>
+                <div style={{marginRight:"auto", marginLeft:"auto"}}>
+                    {this.state.forgotten_password ? 
+                        <>
+                                {/* <span style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
+                                    <FontAwesomeIcon 
+                                    icon="undo" 
+                                    onClick={this.toggleForgotten}
+                                    cursor="pointer"
+                                    />
+                                </span> */}
+                                <ForgottenPopup
+                                    closePopup={this.toggleForgotten}
+                                />
+                        </>
+                            : 
+                            <div>
                         
-                        <FormGroup id="passwordFormLogin">
-                        <label>
+                        <Form onSubmit={this.logIn}>
+                            <h2>LOGOWANIE</h2>
+                            <div style={{ borderTop: "1px solid #000 ", paddingBottom: "5px"}}></div>
+                            <FormGroup>
+                                <label>
+                                <h4>Email lub login</h4> 
+                                    <div class="input-group mb-1">
+                                        <input type="text"
+                                        className="form-control"
+                                        required
+                                        />
+                                    </div>
+                                </label>
+                            </FormGroup>
+                            
+                            <FormGroup>
                             <h4>Hasło</h4> 
-                            <input type={this.state.password_visible? "text" : "password"}
-                                className="form-control"
-                               required
-                            />
-                        </label>
-                        <span className="eyeIcon">
-                            <FontAwesomeIcon 
-                                icon={this.state.password_visible? "eye" : "eye-slash"}
-                                onClick={this.togglePassVisible}
-                                cursor="pointer"
-                            />
-                        </span>
-                        
-                        </FormGroup>
+                                <label>
+                                    <div class="input-group mb-1">
+                                        <input type={this.state.password_visible? "text" : "password"}
+                                            class="form-control" 
+                                            name="password"
+                                            maxLength="128"
+                                            required
+                                        />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
+                                                <FontAwesomeIcon 
+                                                    icon={this.state.password_visible? "eye" : "eye-slash"}
+                                                    className="fa-lg"
+                                                />
+                                            </button>
+                                        </div>
 
-                        <label className="forgot_password" onClick={this.toggleForgotten}>Nie pamiętam hasła</label><br/>
-                        
-                        <label>
-                            <Button className="btn-success" onClick={this.logIn}>ZALOGUJ</Button>
-                        </label>
-                            <br/>
-                            Nie masz konta? Możesz się zarejestrować
-                            <br/>
-                        <label>
-                            <Button onClick={()=>this.props.action()}>REJESTRACJA</Button>
-                        </label>
-                        <br/>
-                    </Form>
-                    </div>
-                    }
+                                        
+                                    </div>
+                                </label>
+                                <br/>
+
+                                <label className="forgot_password" onClick={this.toggleForgotten}>Nie pamiętam hasła</label><br/>
+                                
+                                <label>
+                                    <button className="btn btn-success mb-3 ButtonLoginAndRegister" onClick={this.logIn}>ZALOGUJ SIĘ</button>
+                                </label>
+                                    <br/>
+                                    Nie masz konta? Możesz się zarejestrować
+                                    <br/>
+                                <label>
+                                    <button className="btn btn-primary ButtonLoginAndRegister" onClick={()=>this.props.action()}>REJESTRACJA</button>
+                                </label>
+                                <br/>
+                            </FormGroup>
+                            
+                        </Form>
+                        </div>
+                        }
+                </div>
             </div>  
         )
     }

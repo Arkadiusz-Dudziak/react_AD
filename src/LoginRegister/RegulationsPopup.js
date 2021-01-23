@@ -1,5 +1,8 @@
 import React, {Component} from "react"
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+library.add(faTimes);
 class RegulationsPopup extends Component
 {
     constructor(props)
@@ -12,7 +15,13 @@ class RegulationsPopup extends Component
         return(
         <div className='RegulationsPopup'>
           <div className='RegulationsPopup_inner'>
-                <button style={{float: "right"}}onClick={this.props.closePopup}>X</button>
+                <span className="xButton" style={{float: "right", fontSize: "30px", paddingRight: "15px"}} onClick={this.props.closePopup}>
+                    <FontAwesomeIcon 
+                        icon="times" 
+                        onClick={this.props.closePopup}
+                        cursor="pointer"
+                    />
+                </span>
                 <ol>
                     <li>Warunki techniczne korzystania z serwisu</li>
                     <ul>
@@ -67,7 +76,7 @@ class RegulationsPopup extends Component
                         </li>
                     </ul>
                 </ol>
-                <button style={{display: "block", marginLeft: "auto", marginRight: "auto"}} onClick={this.props.closePopup}>Zamknij</button>
+                <button className="btn btn-outline-secondary" style={{display: "block", marginLeft: "auto", marginRight: "auto" }} onClick={this.props.closePopup}>Zamknij</button>
             </div>
         </div>
         )

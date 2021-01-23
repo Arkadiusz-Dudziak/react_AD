@@ -97,48 +97,7 @@ class NewPassword extends Component
     {
         return(
             <div>
-                
-                {/* <label>
-                    <input type={this.state.password_visible? "text" : "password"}
-                        className="pass form-control"
-                        name="password"
-                        value={this.state.password}
-                        onChange={this.handlePasswordChange}
-                        onFocus={this.toggleFocus}
-                        onBlur={this.toggleFocus}
-                        maxLength="128"
-                        required
-                    />
-                </label>
-                <span className="eyeIcon">
-                    <FontAwesomeIcon 
-                        icon={this.state.password_visible? "eye" : "eye-slash"}
-                        onClick={this.togglePassVisible}
-                        className="fa-lg"
-                        cursor="pointer"
-                    />
-                </span> */}
-                
 
-                {/* <label style={this.state.visible? {display: "none"}:{display:"block"}}>
-                        Hasło musi posiadać: <br/>
-                    <span style={this.state.minChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 8 znaków</b></span><br/>
-                    <span style={this.state.number? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 cyfrę</b></span><br/>
-                    <span style={this.state.letter? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 literę </b></span><br/>
-                    <span style={this.state.specialChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 znak specjalny</b></span><br/>
-                </label> */}
-                
-                {/* <label>
-                    <input type={this.state.password_visible? "text" : "password"} 
-                        name="password_confirm"
-                        className="form-control"
-                        value={this.state.password_confirm}
-                        onChange={this.handleChange}
-                        onFocus={this.toggleFocusPassRepeat}
-                        maxLength="128"
-                        required
-                    />
-                </label> */}
                 <h4>Hasło</h4> 
                 <div class="input-group mb-3">
                     <input type={this.state.password_visible? "text" : "password"}
@@ -180,14 +139,7 @@ class NewPassword extends Component
                         maxLength="128"
                         required
                     />
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
-                            <FontAwesomeIcon 
-                                icon={this.state.password_visible? "eye" : "eye-slash"}
-                                className="fa-lg"
-                            />
-                        </button>
-                    </div>
+                    
                 </div>
 
                 <label style={this.state.passRepeat_visible? {display:"block"}:{display: "none"}}>

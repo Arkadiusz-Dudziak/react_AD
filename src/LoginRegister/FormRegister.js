@@ -104,9 +104,10 @@ class FormRegister extends Component
     render()
     {
         return(
-            <div className="verticalCenter" style={{display:"flex"}}>
+            <div style={{display:"flex"}}>
                 <div style={{marginRight:"auto", marginLeft:"auto"}}>
                 <h2>REJESTRACJA</h2>
+                <div style={{ borderTop: "1px solid #000 ", paddingBottom: "5px"}}></div>
                 <Form onSubmit={this.handleSubmit}>
                     <FormGroup>
                     <h4>Email</h4>
@@ -175,13 +176,13 @@ class FormRegister extends Component
                     </FormGroup>
                         
                     <label>
-                        <Button type="submit">ZAREJESTRUJ SIĘ</Button>
+                        <Button className="btn brn-primary ButtonLoginAndRegister" type="submit">ZAREJESTRUJ SIĘ</Button>
                     </label>
                     
                     <br/>
                         Przejdź do logowania
                     <br/>
-                        <Button className="btn-success" onClick={()=>this.props.action()}>LOGOWANIE</Button>
+                        <Button className="btn-success ButtonLoginAndRegister" onClick={()=>this.props.action()}>LOGOWANIE</Button>
                     <br/>
 
                     

@@ -36,13 +36,7 @@ class ForgottenPopup extends React.Component 
     {
         return (
         <div>
-                <span style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
-                    <FontAwesomeIcon 
-                    icon="undo" 
-                    onClick={this.props.closePopup}
-                    cursor="pointer"
-                    />
-                </span>
+                
 
                 <h1>Zapomniałeś hasła?</h1>
                 <p id="forgotten_pass_info">
@@ -51,9 +45,9 @@ class ForgottenPopup extends React.Component 
                 </p>
 
                 <Form>
+                    <h2>Email</h2> 
                     <FormGroup>
                         <label>
-                            <h2>Email</h2> 
                             <input type="email"
                                 className="form-control"
                                 required
@@ -61,7 +55,7 @@ class ForgottenPopup extends React.Component 
                         </label>
                     </FormGroup>
                     <FormGroup>
-                        <label>
+                        <label style={{marginTop:"10px"}}>
                         <Recaptcha
                             sitekey="6LfCKx4aAAAAAI3E7-kchlw_iZB_RsDxy9nb_ujM"
                             render="explicit"
@@ -72,7 +66,7 @@ class ForgottenPopup extends React.Component 
                         </label>
                         
                     </FormGroup>
-                    <Button className="btn-success" type="submit">Resetuj hasło</Button>
+                    <Button className="btn-success mt-3 ButtonLoginAndRegister" type="submit">Resetuj hasło</Button>
                 </Form>           
         </div>
         );

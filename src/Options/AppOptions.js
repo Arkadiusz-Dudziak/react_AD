@@ -110,9 +110,31 @@ class App_Options extends Component
                         <h3>Uprawnienia: {this.state.permissions}</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <FormGroup>
-                            <label>
-                                <h4>Aktualne hasło</h4> 
-                                <input type={this.state.password_visible? "text" : "password"}
+                            
+                                <h4>Aktualne hasło</h4>
+
+                                <div class="input-group mb-3">
+                                    <input type={this.state.password_visible? "text" : "password"}
+                                        class="form-control" 
+                                        name="password"
+                                        value={this.state.password}
+                                        onChange={this.handlePasswordChange}
+                                        onFocus={this.toggleFocus}
+                                        onBlur={this.toggleFocus}
+                                        maxLength="128"
+                                        required
+                                    />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
+                                            <FontAwesomeIcon 
+                                                icon={this.state.password_visible? "eye" : "eye-slash"}
+                                                className="fa-lg"
+                                            />
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                {/* <input type={this.state.password_visible? "text" : "password"}
                                     className="pass form-control"
                                     name="password"
                                     value={this.state.current_password}
@@ -131,7 +153,7 @@ class App_Options extends Component
                                 className="fa-lg"
                                 cursor="pointer"
                                 />
-                            </span>
+                            </span> */}
                             
                         </FormGroup>
                         

@@ -26,13 +26,13 @@ class HelpPopup extends Component
             <>
             <div className='Help_popup'>
                 <div className='Help_popup_inner'>
-                    <div style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
+                    <span className="xButton" style={{float: "right", fontSize: "30px", paddingRight: "15px"}}>
                         <FontAwesomeIcon 
                             icon="times"
                             onClick={this.props.closePopup}
                             cursor="pointer"
                         />
-                    </div>
+                    </span>
                     <h2>Pomoc</h2><br/>
                     <h4>Informacje o autorach: </h4>
                     Arkadiusz Dudziak, Mikołaj Frohmberg, Arkadiusz Tomczak, Łukasz Wełnic <br/>

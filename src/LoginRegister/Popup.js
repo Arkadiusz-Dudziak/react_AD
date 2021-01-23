@@ -36,13 +36,16 @@ class Popup extends React.Component 
         <div className='popup'>
           <div className='popup_inner'>
               <div style={{float: "right", fontSize: "30px", marginRight: "15px"}}>
-                  <FontAwesomeIcon 
-                    icon="times" 
-                    onClick={this.props.closePopup}
-                    cursor="pointer"
-                  />
+                  <span className="xButton">
+                    <FontAwesomeIcon 
+                      icon="times" 
+                      onClick={this.props.closePopup}
+                      cursor="pointer"
+                    />
+                  </span>
+                  
               </div>
-                
+              
               {this.state.register ? <FormRegister action={this.handleRegisterChange}/> : <FormLogin action={this.handleRegisterChange}/>}
               
           </div>
