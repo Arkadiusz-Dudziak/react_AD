@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import {FormGroup} from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -99,9 +98,9 @@ class NewPassword extends Component
             <div>
 
                 <h4>Hasło</h4> 
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                     <input type={this.state.password_visible? "text" : "password"}
-                        class="form-control" 
+                        className="form-control" 
                         name="password"
                         value={this.state.password}
                         onChange={this.handlePasswordChange}
@@ -110,8 +109,8 @@ class NewPassword extends Component
                         maxLength="128"
                         required
                     />
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
+                    <div className="input-group-append">
+                        <button className="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
                             <FontAwesomeIcon 
                                 icon={this.state.password_visible? "eye" : "eye-slash"}
                                 className="fa-lg"
@@ -128,9 +127,9 @@ class NewPassword extends Component
                     <span style={this.state.specialChar? {color: "#00b041"}: {color:"#e62929"}}><b>co najmniej 1 znak specjalny</b></span><br/>
                 </label>
                 <h4>Powtórz hasło</h4> 
-                <div class="input-group mb-3">
+                <div className="input-group mb-3">
                     <input type={this.state.password_visible? "text" : "password"}
-                        class="form-control" 
+                        className="form-control" 
                         placeholder=""
                         name="password_confirm"
                         value={this.state.password_confirm}

@@ -10,7 +10,7 @@ library.add(faMinusCircle);
 library.add(faBan);
 library.add(faRedo);
 
-class Calendar extends Component
+class BanSetter extends Component
 {
     constructor(props)
     {
@@ -88,28 +88,36 @@ class Calendar extends Component
                     </div>
                     :
                     <div>
-                        <FontAwesomeIcon 
-                            icon="redo"
-                            cursor="pointer"
-                            title="anuluj bana"
-                            onClick={this.cancelBan}
-                        />
-                        <Form.Control 
-                            type="date"
-                            value={this.state.date}
-                            min={today} //TODO   czas z serwera
-                            name="data"
-                            title="wybierz datę, do której użytkownik ma być zbanowany"
-                            onKeyDown={(e) => e.preventDefault()}
-                            onChange={this.handleInput}
-                        />
-                        <FontAwesomeIcon 
-                            icon="ban"
-                            cursor="pointer"
-                            title="permanentny ban"
-                            color="red"
-                            onClick={this.pernamentBan}
-                        />
+                        <label>
+                            <FontAwesomeIcon 
+                                icon="redo"
+                                cursor="pointer"
+                                title="anuluj bana"
+                                onClick={this.cancelBan}
+                            />
+                        </label>
+                        
+                        <label>
+                            <Form.Control 
+                                type="date"
+                                value={this.state.date}
+                                min={today} //TODO   czas z serwera
+                                name="data"
+                                title="wybierz datę, do której użytkownik ma być zbanowany"
+                                onKeyDown={(e) => e.preventDefault()}
+                                onChange={this.handleInput}
+                            />
+                        </label>
+
+                        <label>
+                            <FontAwesomeIcon 
+                                icon="ban"
+                                cursor="pointer"
+                                title="permanentny ban"
+                                color="red"
+                                onClick={this.pernamentBan}
+                            />
+                        </label>
                         
                     </div>
                     }
@@ -120,4 +128,4 @@ class Calendar extends Component
        
     
 }
-export default Calendar
+export default BanSetter

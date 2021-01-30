@@ -4,6 +4,7 @@ import ObjectsRow from "./ObjectsRow"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSync } from "@fortawesome/free-solid-svg-icons";
+import {Button} from 'react-bootstrap'
 
 library.add(faSync);
 
@@ -96,7 +97,10 @@ class TabelaObiektow extends Component
                   />
                 </th>
                 :<th></th>}
-              <th onClick={this.gotoATmoduleAddObject} style={{backgroundColor:"green", color:"white", cursor:"pointer"}}>Dodaj obiekt</th>
+              <th onClick={this.gotoATmoduleAddObject} 
+                  style={{backgroundColor:"green", color:"white", cursor:"pointer", borderRight: "none"}}>
+                  <Button className="btn-success">Dodaj obiekt</Button>
+              </th>
             </tr>
           </thead>
           <tbody id="tbody">

@@ -11,7 +11,7 @@ class App_ObiektyPanel extends Component
         return(
                 <div>
                     <AppLoginRegister/>
-                    <h1>Panel Administratora - zarządzanie administracją obiektów</h1>
+                    <h2 style={{padding:"10px"}}>Panel Administratora - zarządzanie administracją obiektów</h2>
                     <TabelaObiektow/>
                 </div> 
         )

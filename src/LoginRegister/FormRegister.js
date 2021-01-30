@@ -7,6 +7,8 @@ import Recaptcha from 'react-recaptcha';
 
 import LinkConfirmPopup from "./LinkConfirmPopup"
 import NewPasswordandRepeat from "../SharedModules/NewPassword"
+import { sha256 } from "js-sha256";
+import { registerSelf } from "../FetchData";
 
 //RECAPTCHA v2
 
@@ -50,6 +52,12 @@ class FormRegister extends Component
         }
     }
 
+    hash_password()
+    {
+        //console.log(sha256(this.state.password))
+        return sha256.hmac('example_key', this.state.password)
+    }
+
     handleChange(event)
     {
         const {name, value, type, checked} = event.target
@@ -60,14 +68,16 @@ class FormRegister extends Component
     handleSubmit(event)
     {   
         event.preventDefault();
-        if(this.state.password  && this.state.password_correct && this.state.regulations_ok && this.state.isVerified)
-        {
+        // if(this.state.password  && this.state.password_correct && this.state.regulations_ok && this.state.isVerified)
+        if(this.state.password)
+        {   
+            var password_hash = this.hash_password()
+            registerSelf(this.state.login, password_hash)
             this.setState({showRegistrationEnd: true});
         } //TODO bez captchy tez przechodzi dalej
         else
         {
-            console.log("sprawdź ponownie formularz rejestracji!");
-            //console.log(this.state.password, this.state.password_correct, this.state.regulations_ok);
+            alert("Coś poszło nie tak! Prosimy o zaznaczenie pola reCAPTCHA.");
         }
             
     }
@@ -116,7 +126,7 @@ class FormRegister extends Component
                         className="form-control"
                         value={this.state.email} 
                         onChange={this.handleChange}
-                        required
+                        // required
                     />
                     </FormGroup>
                     
@@ -127,7 +137,7 @@ class FormRegister extends Component
                         name="login"
                         value={this.state.login} 
                         onChange={this.handleChange}
-                        required
+                        // required
                     />
                     </FormGroup>
                     
@@ -142,7 +152,7 @@ class FormRegister extends Component
                             name="regulations_ok"
                             checked={this.state.regulations_ok}
                             onChange={this.handleChange}
-                            required
+                            // required
                         />
                         Akceptuję&nbsp;
                     </label>
@@ -165,7 +175,7 @@ class FormRegister extends Component
                         :null
                     }
                     <br/>
-                    <FormGroup className="ReCaptcha">
+                    {/* <FormGroup className="ReCaptcha">
                         <Recaptcha
                             sitekey="6LfCKx4aAAAAAI3E7-kchlw_iZB_RsDxy9nb_ujM"
                             render="explicit"
@@ -173,7 +183,7 @@ class FormRegister extends Component
                             verifyCallback={this.verifyCallback}
                             hl={"pl"}
                         />
-                    </FormGroup>
+                    </FormGroup> */}
                         
                     <label>
                         <Button className="btn brn-primary ButtonLoginAndRegister" type="submit">ZAREJESTRUJ SIĘ</Button>

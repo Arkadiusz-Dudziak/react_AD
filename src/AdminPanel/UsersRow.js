@@ -4,7 +4,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEdit, faCheck, faCalendarAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 import SelectList from "./SelectList"
 import RadioButtons from "./RadioButtons";
-import Calendar from "./BanSetter"
+import BanSetter from "./BanSetter"
 import {Form} from 'react-bootstrap'
 
 library.add(faEdit);
@@ -123,7 +123,7 @@ class UsersRow extends Component
                 </td>
                 <td>{!this.state.change?this.state.ban:
                         this.state.uprawnienia==="użytkownik"?
-                            <Calendar date={this.state.ban} action={this.setBanDate}/>
+                            <BanSetter date={this.state.ban} action={this.setBanDate}/>
                         :
                         <span style={{color:"red"}}>Operacja niemożliwa</span>
                     }

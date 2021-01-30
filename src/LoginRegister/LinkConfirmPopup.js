@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from "react-bootstrap"
 

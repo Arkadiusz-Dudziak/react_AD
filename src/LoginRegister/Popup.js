@@ -1,7 +1,6 @@
 import React, {Component} from "react"
 import FormLogin from "./FormLogin"
 import FormRegister from "./FormRegister"
-import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -9,7 +8,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faTimes);
 
-class Popup extends React.Component 
+class Popup extends Component 
 {
     constructor(props)
     {

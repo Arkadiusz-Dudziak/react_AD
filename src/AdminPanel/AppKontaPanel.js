@@ -1,5 +1,4 @@
 import React, {Component} from "react"
-import Cookies from 'universal-cookie'
 //import {DatePicker} from "react-bootstrap-date-picker"
 import UsersTable from "./TabelaKonta"
 import AppLoginRegister from "../LoginRegister/AppLoginRegister"
@@ -12,7 +11,7 @@ class AppKontaPanel extends Component
         return(
                 <div>
                     <AppLoginRegister/>
-                    <h1>Panel Administratora (Konta)</h1>
+                    <h1 style={{color:"white"}}>Panel Administratora (Konta)</h1>
                     <UsersTable/>
                 </div>
         )

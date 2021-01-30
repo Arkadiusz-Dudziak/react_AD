@@ -90,32 +90,32 @@ class App_Options extends Component
     setNewDescription(event)
     {
         this.setState({prev_textAreaValue: this.state.textAreaValue});
-        setNewAccountDescription(this.state.userId, this.state.textAreaValue)
+        setNewAccountDescription(this.state.textAreaValue)
     }
 
     setNewPassword_()
     {
-        console.log(this.state.new_password," ", this.state.current_password)
-        setNewPassword(this.state.userId, this.state.new_password, this.state.current_password)
+        // console.log(this.state.new_password," ", this.state.current_password)
+        setNewPassword(this.state.new_password, this.state.current_password)
     }
 
     render()
     {
         return(
-            <d>
+            <div>
             <AppLoginRegister/>
             <div className="container">
                 <div className="row">
-                    <div className="col-md-9 pt-4">
+                    <div className="col-md-9 col-sm-12 pt-4">
                         <h3>Uprawnienia: {this.state.permissions}</h3>
                         <h3>Wypełnij poniższy formularz by zmienić hasło</h3>
                         <FormGroup>
                             
                                 <h4>Aktualne hasło</h4>
 
-                                <div class="input-group mb-3">
+                                <div className="input-group mb-3">
                                     <input type={this.state.password_visible? "text" : "password"}
-                                        class="form-control" 
+                                        className="form-control" 
                                         name="password"
                                         value={this.state.password}
                                         onChange={this.handlePasswordChange}
@@ -124,8 +124,8 @@ class App_Options extends Component
                                         maxLength="128"
                                         required
                                     />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-secondary" type="button" onClick={this.togglePassVisible}>
                                             <FontAwesomeIcon 
                                                 icon={this.state.password_visible? "eye" : "eye-slash"}
                                                 className="fa-lg"
@@ -133,27 +133,7 @@ class App_Options extends Component
                                         </button>
                                     </div>
                                 </div>
-                                
-                                {/* <input type={this.state.password_visible? "text" : "password"}
-                                    className="pass form-control"
-                                    name="password"
-                                    value={this.state.current_password}
-                                    onChange={this.handlePasswordChange}
-                                    onFocus={this.toggleFocus}
-                                    onBlur={this.toggleFocus}
-                                    maxLength="128"
-                    
-                                    required
-                                />
-                            </label>
-                            <span className="eyeIcon">
-                                <FontAwesomeIcon 
-                                icon={this.state.password_visible? "eye" : "eye-slash"}
-                                onClick={this.togglePassVisible}
-                                className="fa-lg"
-                                cursor="pointer"
-                                />
-                            </span> */}
+                            
                             
                         </FormGroup>
                         
@@ -174,7 +154,7 @@ class App_Options extends Component
                     </div>
                 </div>
             </div>
-            </d>
+            </div>
         )
     }
 }

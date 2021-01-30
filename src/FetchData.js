@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Cookies from 'universal-cookie'
+import { hash_password } from "./HashPassword";
 
 var jwt = require("jsonwebtoken");
 const cookies = new Cookies();
@@ -250,7 +251,7 @@ export function getUsersData()
             login: "roberto_maximo",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
-            ban: "2021-04-13"
+            ban: ""
         }
         ,
         {
@@ -316,7 +317,7 @@ export function getUsersData()
             login: "geller",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
-            ban: "2022-02-01"
+            ban: ""
         },
         {        
             id: 21,
@@ -332,7 +333,7 @@ export function getUsersData()
             login: "you_need_to_pay",
             zweryfikowany: "NIE",
             uprawnienia: "administrator obiektu",
-            ban: "2020-05-07"
+            ban: ""
         },
         {
             id: 23,        
@@ -340,7 +341,7 @@ export function getUsersData()
             login: "tasty_bugs_for_free",
             zweryfikowany: "TAK",
             uprawnienia: "administrator obiektu",
-            ban: "2021-02-14"
+            ban: ""
         },
         {
             id: 24,        
@@ -475,15 +476,18 @@ export function setNewAccountDescription(userId, description)
     })*/
 }
 
-export function setNewPassword(userId, newPassword, current_password)
+export function setNewPassword(newPassword, currentPassword)
 {
-    console.log("setNewPassword, ", userId, " - ", newPassword);
-    console.log("currentPass: ", current_password)
+    var hash_new = hash_password(newPassword)
+    var hash_old = hash_password(currentPassword)
+    console.log("setNewPassword, new_hash: ", hash_new);
+    console.log("old_hash: ", hash_old)
     /*let params = {
         id_uzytkownika: userId,
-        haslo: newPassword,
+        nowe_haslo: hash_new,
+        obecne_haslo: hash_old
     };
-    /*axios.post('/nowe_haslo', {params})
+    axios.post('/nowe_haslo', {params}, {withCredentials: true})
     .then((response) => {
         if (response !== {})
         return response;
@@ -492,4 +496,56 @@ export function setNewPassword(userId, newPassword, current_password)
     .catch((error) => {
         throw Error("Brak poprawnej odpowiedzi serwera API!");
     })*/
+}
+
+export function registerSelf(login, hashed_password)
+{
+    // let params = {
+    //     login: login,
+    //     haslo: hashed_password,
+    // };
+    // axios.post('/rejestracja', {params})
+    // .then((response) => {
+    //     if (response !== {})
+    //     return response;
+    // else throw Error("Błąd dostępu do danych");
+    // })
+    // .catch((error) => {
+    //     throw Error("Brak poprawnej odpowiedzi serwera API!");
+    // })
+}
+
+export function authorizateUser(login, hashed_password)
+{
+    /*let params = {
+        login: login,
+        haslo: hashed_password,
+    };
+    axios.post('/login', {params})
+    .then((response) => {
+        if (response !== {})
+        return response;
+    else throw Error("Błąd dostępu do danych");
+    })
+    .catch((error) => {
+        throw Error("Brak poprawnej odpowiedzi serwera API!");
+    })*/
+//     $.ajax("https://example.com/v2/login", 
+//     {
+//      method: 'POST',
+//      data: {login_id: login, password: hashed_password},
+//      crossDomain: true,
+//      success: "sukces",
+//      error: "error"
+//   });
+}
+
+export function resetPassword(email)
+{
+    console.log("resetowanie hasła: ", email);
+}
+
+export function verifySelf(vkey)
+{
+    console.log(vkey);
 }

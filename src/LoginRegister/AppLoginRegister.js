@@ -6,7 +6,7 @@ import './index_LR.css';
 import HelpPopup from "./HelpPopup";
 import Cookies from 'universal-cookie'
 /* https://codepen.io/bastianalbers/pen/PWBYvz */
-class App_1 extends React.Component 
+class App_1 extends Component 
 {
     constructor() 
     {
@@ -53,6 +53,7 @@ class App_1 extends React.Component
                 this.setState({userName:decode.login})
             }   
         }
+        
         
     }
 

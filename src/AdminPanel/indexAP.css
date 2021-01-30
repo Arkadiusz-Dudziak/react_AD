@@ -3,7 +3,7 @@ h1
 {
   margin: 0;
   padding: 0;
-  color: white;
+  /* color: white; */
 }
 html, body, .app 
 {
@@ -11,7 +11,7 @@ html, body, .app
   padding: 0;
   position: relative;
   width: 100%;
-  color: white;
+  /* color: white; */
 }
 
 

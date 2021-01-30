@@ -33,7 +33,11 @@ class HelpPopup extends Component
                             cursor="pointer"
                         />
                     </span>
-                    <h2>Pomoc</h2><br/>
+                    <br/>
+                    <h1 style={{marginBottom: "15px", marginLeft: "35px"}}>Pomoc</h1>
+                    
+                    <div style={{ borderTop: "1px solid #000 ", paddingBottom: "5px"}}></div>
+                    <br/>
                     <h4>Informacje o autorach: </h4>
                     Arkadiusz Dudziak, Mikołaj Frohmberg, Arkadiusz Tomczak, Łukasz Wełnic <br/>
                     Regulamin serwisu jest dostępny po kliknęciu w poniższy odnośnik. <br/>

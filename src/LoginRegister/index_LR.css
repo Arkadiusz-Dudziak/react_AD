@@ -135,6 +135,21 @@ html, body, .app
   color: black;
 }
 
+#RegulationsList > h1
+{
+  text-align: center;
+  margin-left: 40px;
+}
+#RegulationsList
+{
+  padding: 20px;
+}
+#RegulationsList > ol > li
+{
+  font-size: large;
+  font-weight: 700;
+}
+
 .RegisterEndPopup 
 {
   position: fixed;
