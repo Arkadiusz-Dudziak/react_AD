@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import Popup from "./Popup"
 import {Button} from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './index_LR.css';
+import './index_LR.scss';
 import HelpPopup from "./HelpPopup";
 import Cookies from 'universal-cookie'
 /* https://codepen.io/bastianalbers/pen/PWBYvz */

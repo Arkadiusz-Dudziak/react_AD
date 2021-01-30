@@ -1,8 +1,8 @@
 import React, {Component} from "react"
 import TabelaObiektow from "./TabelaObiektow"
 import AppLoginRegister from "../LoginRegister/AppLoginRegister"
-import "./indexOP.css"
-import '../LoginRegister/index_LR.css'
+import "./indexOP.scss"
+import '../LoginRegister/index_LR.scss'
 
 class App_ObiektyPanel extends Component
 {

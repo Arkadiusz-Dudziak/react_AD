@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "./indexUP.css"
+import "./indexUP.scss"
 import UserPanel from "./UserPanel"
 class App_UserProfile extends Component
 {
