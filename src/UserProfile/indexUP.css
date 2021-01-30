@@ -1,0 +1,44 @@
+body {
+  background-color: #1a2057;
+  color: white;
+}
+
+#side_menu {
+  background-color: blue;
+  height: 100%;
+  width: 100%;
+}
+
+#side_menu > ul {
+  list-style: none;
+  padding: 0;
+  padding-bottom: 1rem;
+}
+
+#side_menu > ul > li {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-size: large;
+}
+
+#side_menu > ul > li:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  #side_menu {
+    height: auto;
+    position: relative;
+  }
+}
+
+.container-fluid {
+  color: #fff;
+  overflow-x: hidden;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+/*# sourceMappingURL=indexUP.css.map */

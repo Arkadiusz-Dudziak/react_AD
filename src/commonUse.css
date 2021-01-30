@@ -1,0 +1,6 @@
+.verticalCenter {
+  top: 40%;
+  -webkit-transform: translateY(40%);
+          transform: translateY(40%);
+}
+/*# sourceMappingURL=commonUse.css.map */

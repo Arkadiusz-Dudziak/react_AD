@@ -1,0 +1,244 @@
+@charset "UTF-8";
+body {
+  /*color: white;*/
+  background-color: #1a2057;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/*css-popup*/
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+html, body, .app {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  background-color: white;
+  /*color: white;*/
+}
+
+.LoginRegisterUpMenu {
+  float: right;
+}
+
+.UpMenuButton {
+  margin: 10px;
+  width: 150px;
+  font-size: small;
+}
+
+.popup {
+  /*przesłania treść, zajmuje cały widok przeglądarki*/
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_inner {
+  /*wnętrze popup'a i przycięcie okna do wyglądu popup'a*/
+  position: absolute;
+  text-align: center;
+  left: 20%;
+  right: 20%;
+  top: 5%;
+  bottom: 5%;
+  margin: auto;
+  background: #b3d0ff;
+  overflow-y: auto;
+  color: black;
+  -webkit-box-shadow: 6px 14px 20px 5px rgba(0, 0, 0, 0.68);
+  box-shadow: 6px 14px 20px 5px rgba(0, 0, 0, 0.68);
+}
+
+@media (max-width: 768px) {
+  .popup_inner {
+    left: 5%;
+    right: 5%;
+  }
+}
+
+.popup_inner h2 {
+  color: black;
+}
+
+.popup_inner h2 {
+  margin-bottom: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 0rem;
+}
+
+.regulations_link {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  font-weight: bold;
+}
+
+.regulations_link:hover {
+  cursor: pointer;
+}
+
+/*Regulations popup*/
+.RegulationsPopup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+}
+
+.RegulationsPopup_inner {
+  position: absolute;
+  text-align: justify;
+  margin: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  left: 5%;
+  right: 5%;
+  top: 5%;
+  bottom: 5%;
+  overflow-y: scroll;
+  background: #f2f2f2;
+  color: black;
+}
+
+#RegulationsList > h1 {
+  text-align: center;
+  margin-left: 40px;
+}
+
+#RegulationsList {
+  padding: 20px;
+}
+
+#RegulationsList > ol > li {
+  font-size: large;
+  font-weight: 700;
+}
+
+.RegisterEndPopup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.RegisterEndPopup_inner {
+  position: absolute;
+  text-align: center;
+  left: 5%;
+  right: 5%;
+  top: 0%;
+  bottom: 0%;
+  margin: auto;
+  background: #b3d0ff;
+  color: black;
+  font-size: large;
+}
+
+/*pomoc*/
+.Help_popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.Help_popup_inner {
+  position: absolute;
+  text-align: center;
+  left: 15%;
+  right: 15%;
+  top: 15%;
+  bottom: 15%;
+  margin: auto;
+  background: #b3d0ff;
+  color: black;
+  font-size: larger;
+  -webkit-box-shadow: 6px 14px 20px 5px rgba(0, 0, 0, 0.68);
+  box-shadow: 6px 14px 20px 5px rgba(0, 0, 0, 0.68);
+}
+
+.forgot_password {
+  color: blue;
+}
+
+.forgot_password:hover {
+  cursor: pointer;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+}
+
+.xButton:hover {
+  color: red;
+}
+
+#forgotten_pass_info {
+  padding-top: 20px;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+.btn-outline-secondary {
+  background-color: white;
+}
+
+.ButtonLoginAndRegister {
+  width: 204px;
+}
+
+/* .eyeIcon
+{
+  padding-left: 5px;
+} */
+.ReCaptcha {
+  margin-bottom: 10px;
+}
+
+input[type=checkbox] {
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(1.5);
+  /* IE */
+  -moz-transform: scale(1.5);
+  /* FF */
+  -webkit-transform: scale(1.5);
+  /* Safari and Chrome */
+  -o-transform: scale(1.5);
+  /* Opera */
+  padding: 10px;
+  margin: 10px;
+}
+/*# sourceMappingURL=index_LR.css.map */

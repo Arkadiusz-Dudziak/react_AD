@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import "./indexOptions.scss"
+import "./indexOptions.css"
 import NewPasswordandRepeat from "../SharedModules/NewPassword"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Button } from "react-bootstrap";
@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import AppLoginRegister from "../LoginRegister/AppLoginRegister"
-import '../LoginRegister/index_LR.scss'
+import '../LoginRegister/index_LR.css'
 import Cookies from 'universal-cookie'
 
 library.add(faEye);
