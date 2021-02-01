@@ -7,9 +7,9 @@ import "./commonUse.css"
 
 //import AppObiektyPanel from './ObiektyPanel/AppObiektyPanel'
 
-//import AppLoginRegister from './LoginRegister/AppLoginRegister'; //logowanie, rejestracja
+import AppLoginRegister from './LoginRegister/AppLoginRegister'; //logowanie, rejestracja
 
-import AppKontaPanel from './AdminPanel/AppKontaPanel'; //panel z kontami uzytkownikow
+//import AppKontaPanel from './AdminPanel/AppKontaPanel'; //panel z kontami uzytkownikow
 
 //import AppOptions from './Options/AppOptions';     
 
@@ -17,7 +17,7 @@ import AppKontaPanel from './AdminPanel/AppKontaPanel'; //panel z kontami uzytko
 import * as serviceWorker from './serviceWorker';
 
 
-ReactDOM.render(<AppKontaPanel/>, document.getElementById('root'));
+ReactDOM.render(<AppLoginRegister/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

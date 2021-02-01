@@ -5,6 +5,12 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index_LR.css';
 import HelpPopup from "./HelpPopup";
 import Cookies from 'universal-cookie'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
+
+library.add(faCog);
 /* https://codepen.io/bastianalbers/pen/PWBYvz */
 class App_1 extends Component 
 {
@@ -19,9 +25,10 @@ class App_1 extends Component
             userName: "",
             permissions: ""
         };
-        this.togglePopup = this.togglePopup.bind(this)
-        this.toggleHelp = this.toggleHelp.bind(this)
-        this.logOut = this.logOut.bind(this)
+        this.togglePopup = this.togglePopup.bind(this);
+        this.toggleHelp = this.toggleHelp.bind(this);
+        this.logOut = this.logOut.bind(this);
+        this.goToSettings = this.goToSettings.bind(this);
     }
 
     togglePopup(props) 
@@ -57,9 +64,9 @@ class App_1 extends Component
         
     }
 
-    setUser()
+    goToSettings()
     {
-        
+        console.log("go to settings")
     }
 
 
@@ -78,8 +85,19 @@ class App_1 extends Component
         <>
             {this.state.userName!==""?
                 <div className="LoginRegisterUpMenu">
-                    {this.state.userName}
+                    {this.state.permissions}{this.state.userName}
                     <Button className="UpMenuButton btn-secondary" onClick={()=>this.logOut()}>WYLOGUJ</Button>
+                    {this.state.permissions=="administrator systemu"?
+                        <Button className="UpMenuButton btn-secondary" onClick={()=>this.logOut()}>Obiekty</Button>
+                        :
+                        null
+                    }
+                    <button className="btn btn-outline-secondary" type="button" onClick={this.goToSettings}>
+                        <FontAwesomeIcon 
+                            icon={"cog"}
+                            className="fa-lg"
+                        />
+                    </button>
                     <Button className="UpMenuButton btn-info" onClick={()=>this.toggleHelp()}>POMOC</Button>
                 </div>
                 :
