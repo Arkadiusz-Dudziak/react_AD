@@ -30,6 +30,7 @@ html, body, .app {
 .UpMenuButton {
   margin: 10px;
   width: 150px;
+  height: 38px;
   font-size: small;
 }
 

@@ -72,7 +72,7 @@ class FormRegister extends Component
         if(this.state.password)
         {   
             var password_hash = this.hash_password()
-            registerSelf(this.state.login, password_hash)
+            registerSelf(this.state.login, password_hash, this.state.email)
             this.setState({showRegistrationEnd: true});
         } //TODO bez captchy tez przechodzi dalej
         else
@@ -186,7 +186,7 @@ class FormRegister extends Component
                     </FormGroup> */}
                         
                     <label>
-                        <Button className="btn brn-primary ButtonLoginAndRegister" type="submit">ZAREJESTRUJ SIĘ</Button>
+                        <Button className="btn btn-primary ButtonLoginAndRegister" type="submit">ZAREJESTRUJ SIĘ</Button>
                     </label>
                     
                     <br/>

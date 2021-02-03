@@ -29,6 +29,8 @@ class App_1 extends Component
         this.toggleHelp = this.toggleHelp.bind(this);
         this.logOut = this.logOut.bind(this);
         this.goToSettings = this.goToSettings.bind(this);
+        this.goToObjects = this.goToObjects.bind(this);
+        this.goToAccounts = this.goToAccounts.bind(this);
     }
 
     togglePopup(props) 
@@ -47,6 +49,16 @@ class App_1 extends Component
         });
     }
 
+    goToObjects()
+    {
+        console.log("goToObjects")
+    }
+
+    goToAccounts()
+    {
+        console.log("goToAccounts")
+    }
+
     componentDidMount()
     {
         var jwt = require("jsonwebtoken");
@@ -58,6 +70,7 @@ class App_1 extends Component
                 var decode = jwt.decode(token);
                 console.log(decode);
                 this.setState({userName:decode.login})
+                this.setState({permissions:decode.uprawnienia})
             }   
         }
         
@@ -85,13 +98,8 @@ class App_1 extends Component
         <>
             {this.state.userName!==""?
                 <div className="LoginRegisterUpMenu">
-                    {this.state.permissions}{this.state.userName}
-                    <Button className="UpMenuButton btn-secondary" onClick={()=>this.logOut()}>WYLOGUJ</Button>
-                    {this.state.permissions=="administrator systemu"?
-                        <Button className="UpMenuButton btn-secondary" onClick={()=>this.logOut()}>Obiekty</Button>
-                        :
-                        null
-                    }
+                    <span>{this.state.userName} </span>
+                   
                     <button className="btn btn-outline-secondary" type="button" onClick={this.goToSettings}>
                         <FontAwesomeIcon 
                             icon={"cog"}
@@ -99,6 +107,17 @@ class App_1 extends Component
                         />
                     </button>
                     <Button className="UpMenuButton btn-info" onClick={()=>this.toggleHelp()}>POMOC</Button>
+                    
+                    {/* widoki dla administratora systemu tylko */}
+                    {this.state.permissions=="administrator systemu"?
+                        <>
+                            <Button className="UpMenuButton btn-primary" onClick={()=>this.goToAccounts()}>Konta</Button>
+                            <Button className="UpMenuButton btn-primary" onClick={()=>this.goToObjects()}>Obiekty</Button>
+                        </>
+                        :
+                        null
+                    }
+                    <Button className="UpMenuButton btn-outline-secondary" onClick={()=>this.logOut()}>WYLOGUJ</Button>
                 </div>
                 :
                 <div className="LoginRegisterUpMenu">
