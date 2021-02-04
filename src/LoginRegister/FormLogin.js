@@ -8,7 +8,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import ForgottenPopup from "./ForgettenPopup";
 import Cookies from 'universal-cookie'
 import { sha256 } from "js-sha256";
-import { authorizateUser } from "../FetchData";
+import { authorizateUser, loginSelf } from "../FetchData";
 // import { isCompositeComponent } from "react-dom/test-utils";
 
 library.add(faEye);
@@ -58,15 +58,16 @@ class FormLogin extends Component
     logIn()
     {
         console.log("proces logowania");
-        var password_hash = this.hash_password()
-        authorizateUser(this.state.login, password_hash)
+        var password_hash = this.hash_password();
+        loginSelf(this.state.login, password_hash);
+        //authorizateUser(this.state.login, password_hash)
         
         //uzytkownik
-        var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InNwb3J0b3dpZWMzNSIsInVwcmF3bmllbmlhIjoidXp5dGtvd25payIsImVtYWlsIjoiYWRyZXMxQGFkcmVzLmNvbSJ9.vNI3-PNIxt5XxPP6tarsvDU-RISNYhlNDAyzoO7noC0";
-        //administrator
-        var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluX3N5c3RlbXUiLCJ1cHJhd25pZW5pYSI6ImFkbWluaXN0cmF0b3Igc3lzdGVtdSJ9.jq9Sx-vQ3amGNoLj-XGel-RFgwj5vhB9jBpxJZPhcxk"
-        const cookies = new Cookies();
-        cookies.set('user_data', token1, { path: '/' });
+        // var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InNwb3J0b3dpZWMzNSIsInVwcmF3bmllbmlhIjoidXp5dGtvd25payIsImVtYWlsIjoiYWRyZXMxQGFkcmVzLmNvbSJ9.vNI3-PNIxt5XxPP6tarsvDU-RISNYhlNDAyzoO7noC0";
+        // //administrator
+        // var token1 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6ImFkbWluX3N5c3RlbXUiLCJ1cHJhd25pZW5pYSI6ImFkbWluaXN0cmF0b3Igc3lzdGVtdSJ9.jq9Sx-vQ3amGNoLj-XGel-RFgwj5vhB9jBpxJZPhcxk"
+        // const cookies = new Cookies();
+        // cookies.set('token', token1, { path: '/' });
        // window.location.reload(false);
     }
     render()

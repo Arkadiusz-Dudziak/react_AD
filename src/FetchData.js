@@ -501,22 +501,22 @@ export function setNewPassword(newPassword, currentPassword)
 export function registerSelf(login, hashed_password, email)
 {          
     console.log("registerself")     
-    axios.post("http://sportaround.pl/LW/api/ad/zarejestruj.php", 
-        {login_uzytkownika: login,
-        haslo_uzytkownika: hashed_password,
-        email: email})
-    .then((response) => {
-        if (response !== {})
-        {
-            console.log(response.data);
-            return response;
-        }   
+    // axios.post("http://sportaround.pl/LW/api/ad/zarejestruj.php", 
+    //     {login_uzytkownika: login,
+    //     haslo_uzytkownika: hashed_password,
+    //     email: email})
+    // .then((response) => {
+    //     if (response !== {})
+    //     {
+    //         console.log(response.data);
+    //         return response;
+    //     }   
         
-    else throw Error("Błąd dostępu do danych");
-    })
-    .catch((error) => {
-        throw Error("Brak poprawnej odpowiedzi serwera API!");
-    })
+    // else throw Error("Błąd dostępu do danych");
+    // })
+    // .catch((error) => {
+    //     throw Error("Brak poprawnej odpowiedzi serwera API!");
+    // })
 }
 
 export function authorizateUser(login, hashed_password)
@@ -542,6 +542,26 @@ export function authorizateUser(login, hashed_password)
 //      success: "sukces",
 //      error: "error"
 //   });
+}
+
+export function loginSelf(login, hashed_password)
+{
+    // let params = {
+    //     login: login,
+    //     haslo: hashed_password,
+    // };
+    // axios.post('http://sportaround.pl/LW/api/ad/zaloguj.php', {params})
+    // .then((response) => {
+    //     if (response !== {})
+    //     {
+    //         console.log(response.data);
+    //         return response;
+    //     }
+    // else throw Error("Błąd dostępu do danych");
+    // })
+    // .catch((error) => {
+    //     throw Error("Brak poprawnej odpowiedzi serwera API!");
+    // })
 }
 
 export function resetPassword(email)

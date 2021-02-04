@@ -1,14 +1,18 @@
-import React, {Component} from "react"
-import Popup from "./Popup"
-import {Button} from 'react-bootstrap'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import React, {Component} from "react";
+import Popup from "./Popup";
+import {Button} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './index_LR.css';
 import HelpPopup from "./HelpPopup";
-import Cookies from 'universal-cookie'
+import Cookies from 'universal-cookie';
+import {Route, BrowserRouter as Router, Switch, Link} from "react-router-dom"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faCog } from "@fortawesome/free-solid-svg-icons";
+
+import AppOptions from "../Options/AppOptions"
+// import Switch from "react-bootstrap/esm/Switch";
 
 library.add(faCog);
 /* https://codepen.io/bastianalbers/pen/PWBYvz */
@@ -63,8 +67,8 @@ class App_1 extends Component
     {
         var jwt = require("jsonwebtoken");
         const cookies = new Cookies();
-        if (document.cookie.indexOf('user_data') !== -1 ) {
-            var token = cookies.get('user_data');
+        if (document.cookie.indexOf('token') !== -1 ) {
+            var token = cookies.get('token');
             if(token!=="")
             {
                 var decode = jwt.decode(token);
@@ -86,26 +90,25 @@ class App_1 extends Component
     logOut()
     {
         const cookies = new Cookies();
-        cookies.set('user_data', "", { path: '/' });
+        cookies.set('token', "", { path: '/' });
         this.setState({userName: ""})
         window.location.reload(false);
     }
 
     render() 
     {
-        let register = false;
         return (
-        <>
+            <>
             {this.state.userName!==""?
                 <div className="LoginRegisterUpMenu">
                     <span>{this.state.userName} </span>
-                   
-                    <button className="btn btn-outline-secondary" type="button" onClick={this.goToSettings}>
-                        <FontAwesomeIcon 
-                            icon={"cog"}
-                            className="fa-lg"
-                        />
-                    </button>
+                        <button className="btn btn-outline-secondary" type="button" onClick={this.goToSettings} >
+                            <FontAwesomeIcon 
+                                icon={"cog"}
+                                className="fa-lg"
+                                />
+                        </button>
+                    
                     <Button className="UpMenuButton btn-info" onClick={()=>this.toggleHelp()}>POMOC</Button>
                     
                     {/* widoki dla administratora systemu tylko */}
@@ -141,7 +144,8 @@ class App_1 extends Component
             />
             : null
             }
-        </>
+            </>
+        
         );
     }
 };
